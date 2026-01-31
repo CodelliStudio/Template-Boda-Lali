@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Invitación Digital | Boda Daniela & Alejandro</title>
+    <title>Invitación Digital | Daniela & Alejandro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,334 +13,111 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="canvas">
-      <header class="canvas__header">
-        <span>DW</span>
-        <span>EST 2014</span>
-      </header>
+    <main class="invitation">
+      <section class="hero">
+        <div class="hero__image"></div>
+        <div class="hero__overlay">
+          <p class="hero__subtitle">Daniela &amp; Alejandro</p>
+          <h1>Nos casamos</h1>
+          <p class="hero__date">15 · Noviembre · 2024</p>
+        </div>
+      </section>
 
-      <section class="layout">
-        <aside class="side side--left">
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M32 8a24 24 0 1 0 24 24h-6A18 18 0 1 1 32 14z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M32 16v16l10 6"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <h3>Reloj en cuenta regresiva</h3>
-            <span class="feature__arrow"></span>
-          </article>
-
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M14 46c18-8 22-30 36-28-6 12-6 22 0 32-10-4-22-2-36-4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <h3>Texto bíblico o frase especial</h3>
-            <span class="feature__arrow"></span>
-          </article>
-
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <rect
-                  x="12"
-                  y="14"
-                  width="40"
-                  height="38"
-                  rx="6"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M20 10v8M44 10v8"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M32 30c6-8 16 2 0 12-16-10-6-20 0-12z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                />
-              </svg>
-            </div>
-            <h3>Guardar la fecha en la aplicación del calendario</h3>
-            <span class="feature__arrow"></span>
-          </article>
-
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M14 40c14 4 22 4 36 0"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M20 38c-2-8 2-14 10-16-1 6 2 10 8 12"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-              </svg>
-            </div>
-            <h3>Link de App para compartir fotos de la boda</h3>
-            <span class="feature__arrow"></span>
-          </article>
-
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <circle
-                  cx="26"
-                  cy="26"
-                  r="10"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M40 44l6 6"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <h3>Confirmación en línea</h3>
-            <span class="feature__arrow"></span>
-          </article>
-        </aside>
-
-        <section class="invite">
-          <div class="invite__top">
-            <div class="photo photo--hero"></div>
-            <div class="invite__names">
-              <p>Daniela &amp; Alejandro</p>
-              <span>Nuestra Boda</span>
-            </div>
+      <section class="countdown">
+        <h2>Falta poco para el gran día</h2>
+        <div class="countdown__timer" data-countdown>
+          <div>
+            <span class="countdown__number" data-days>00</span>
+            <span class="countdown__label">Días</span>
           </div>
-
-          <div class="invite__countdown">
-            <div>
-              <strong>10</strong>
-              <span>Días</span>
-            </div>
-            <div>
-              <strong>9</strong>
-              <span>Horas</span>
-            </div>
-            <div>
-              <strong>54</strong>
-              <span>Min</span>
-            </div>
-            <div>
-              <strong>2</strong>
-              <span>Seg</span>
-            </div>
+          <div>
+            <span class="countdown__number" data-hours>00</span>
+            <span class="countdown__label">Horas</span>
           </div>
-
-          <div class="invite__section">
-            <h4>Código de Vestimenta</h4>
-            <p>Etiqueta campestre · tonos neutros · cómodo y elegante.</p>
+          <div>
+            <span class="countdown__number" data-minutes>00</span>
+            <span class="countdown__label">Min</span>
           </div>
-
-          <div class="photo photo--full"></div>
-
-          <div class="invite__section invite__section--split">
-            <div>
-              <h4>Regalos</h4>
-              <p>Tu presencia es el mejor regalo, pero aquí puedes sugerir detalles.</p>
-            </div>
-            <div class="photo photo--side"></div>
+          <div>
+            <span class="countdown__number" data-seconds>00</span>
+            <span class="countdown__label">Seg</span>
           </div>
+        </div>
+      </section>
 
-          <div class="invite__gallery">
-            <div class="photo"></div>
-            <div class="photo"></div>
-            <div class="photo"></div>
+      <section class="details">
+        <h3>Nuestra boda</h3>
+        <p>
+          “El amor todo lo puede, todo lo cree, todo lo espera.” Queremos compartir contigo
+          este momento lleno de fe y alegría.
+        </p>
+        <div class="details__grid">
+          <div>
+            <h4>Ceremonia</h4>
+            <p>4:00 PM · Hacienda Los Pinos</p>
           </div>
-
-          <div class="invite__section invite__section--split">
-            <div class="photo photo--side"></div>
-            <div>
-              <h4>Comparte tus fotos</h4>
-              <p>Agrega tus imágenes en tiempo real con la app de los novios.</p>
-            </div>
+          <div>
+            <h4>Recepción</h4>
+            <p>6:30 PM · Jardín Central</p>
           </div>
+        </div>
+        <button class="cta" data-calendar>Guardar la fecha</button>
+      </section>
 
-          <div class="invite__section">
-            <h4>Confirmar aquí</h4>
-            <p>RSVP antes del 15 de agosto · Cupo limitado para niños.</p>
-          </div>
-        </section>
+      <section class="image-block image-block--full"></section>
 
-        <aside class="side side--right">
-          <article class="feature">
-            <h3>Elementos interactivos en su invitación</h3>
-          </article>
+      <section class="section-card">
+        <h3>Código de Vestimenta</h3>
+        <p>Etiqueta campestre · tonos neutros · cómodo y elegante.</p>
+        <button class="cta cta--ghost" data-pinterest>Ver inspiración</button>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M16 18h32v28H16z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <circle cx="32" cy="34" r="6" fill="none" stroke="currentColor" stroke-width="4" />
-                <path
-                  d="M44 14h8"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <h3>Ubicación por Waze</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
+      <section class="section-card">
+        <h3>Regalos</h3>
+        <p>Tu presencia es el mejor regalo. Si deseas un detalle, aquí dejamos sugerencias.</p>
+        <div class="divider"></div>
+        <p class="small">Mesa de regalos · Banco 000-000-000</p>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <circle
-                  cx="32"
-                  cy="32"
-                  r="18"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M28 36c4-12 8-16 12-12-8 2-10 8-12 12z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                />
-              </svg>
-            </div>
-            <h3>Link de Pinterest para código de Vestimenta</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
+      <section class="image-block image-block--split">
+        <div class="image-block__text">
+          <h3>Guarda la fecha</h3>
+          <p>Agrega nuestra boda a tu calendario y no te pierdas ningún detalle.</p>
+          <button class="cta" data-reminder>Crear recordatorio</button>
+        </div>
+        <div class="image-block__photo"></div>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <rect
-                  x="14"
-                  y="18"
-                  width="36"
-                  height="28"
-                  rx="4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M20 38l8-8 6 6 10-10"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-              </svg>
-            </div>
-            <h3>Recomendaciones y restricciones</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
+      <section class="gallery">
+        <div class="gallery__item"></div>
+        <div class="gallery__item"></div>
+        <div class="gallery__item"></div>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <circle
-                  cx="28"
-                  cy="28"
-                  r="10"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M40 40l10 10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <h3>Galería de fotos</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
+      <section class="section-card section-card--split">
+        <div class="section-card__photo"></div>
+        <div>
+          <h3>Comparte tus fotos</h3>
+          <p>Sube tus recuerdos con el hashtag #DanielayAlejandro y en nuestra app.</p>
+          <button class="cta cta--ghost" data-gallery>Subir fotos</button>
+        </div>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path
-                  d="M18 36c6 6 22 6 28 0"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-                <circle cx="24" cy="24" r="4" fill="currentColor" />
-                <circle cx="40" cy="24" r="4" fill="currentColor" />
-              </svg>
-            </div>
-            <h3>Información si la boda acepta la asistencia de niños o no</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
+      <section class="section-card">
+        <h3>Confirmar aquí</h3>
+        <p>RSVP antes del 15 de octubre · Cupo limitado para niños.</p>
+        <form class="rsvp" data-rsvp>
+          <input type="text" name="name" placeholder="Nombre completo" required />
+          <input type="number" name="guests" min="1" max="5" placeholder="Número de invitados" required />
+          <button class="cta" type="submit">Confirmar asistencia</button>
+          <p class="rsvp__message" data-rsvp-message></p>
+        </form>
+      </section>
 
-          <article class="feature">
-            <div class="feature__icon">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <rect
-                  x="14"
-                  y="16"
-                  width="36"
-                  height="32"
-                  rx="6"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="4"
-                />
-                <path
-                  d="M22 22h20M22 30h20M22 38h14"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <h3>Fecha límite de confirmación</h3>
-            <span class="feature__arrow feature__arrow--left"></span>
-          </article>
-        </aside>
+      <section class="footer">
+        <p>Con amor, Daniela &amp; Alejandro</p>
       </section>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
