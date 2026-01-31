@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invitación Digital | Lali & Pepe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="invitation">
+      <section class="hero">
+        <div class="hero__image"></div>
+        <div class="hero__overlay">
+          <p class="hero__subtitle">Lali &amp; Pepe</p>
+          <h1>Nos casamos</h1>
+          <p class="hero__date">15 · Noviembre · 2025</p>
+        </div>
+      </section>
+
+      <section class="countdown">
+        <h2>Falta poco para el gran día</h2>
+        <div class="countdown__timer" data-countdown data-date="2025-11-15T16:00:00">
+          <div>
+            <span class="countdown__number" data-days>00</span>
+            <span class="countdown__label">Días</span>
+          </div>
+          <div>
+            <span class="countdown__number" data-hours>00</span>
+            <span class="countdown__label">Horas</span>
+          </div>
+          <div>
+            <span class="countdown__number" data-minutes>00</span>
+            <span class="countdown__label">Min</span>
+          </div>
+          <div>
+            <span class="countdown__number" data-seconds>00</span>
+            <span class="countdown__label">Seg</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="details">
+        <h3>Nuestra boda</h3>
+        <p>
+          “El amor todo lo puede, todo lo cree, todo lo espera.” Queremos compartir contigo
+          este momento lleno de fe y alegría.
+        </p>
+        <div class="details__grid">
+          <div>
+            <h4>Ceremonia</h4>
+            <p>4:00 PM · Hacienda Los Pinos</p>
+          </div>
+          <div>
+            <h4>Recepción</h4>
+            <p>6:30 PM · Jardín Central</p>
+          </div>
+        </div>
+        <button class="cta" data-calendar>Guardar la fecha</button>
+      </section>
+
+      <section class="image-block image-block--full"></section>
+
+      <section class="section-card">
+        <h3>Código de Vestimenta</h3>
+        <p>Etiqueta campestre · tonos neutros · cómodo y elegante.</p>
+        <button class="cta cta--ghost" data-pinterest>Ver inspiración</button>
+      </section>
+
+      <section class="section-card">
+        <h3>Regalos</h3>
+        <p>Tu presencia es el mejor regalo. Si deseas un detalle, aquí dejamos sugerencias.</p>
+        <div class="divider"></div>
+        <p class="small">Mesa de regalos · Banco 000-000-000</p>
+      </section>
+
+      <section class="image-block image-block--split">
+        <div class="image-block__text">
+          <h3>Guarda la fecha</h3>
+          <p>Agrega nuestra boda a tu calendario y no te pierdas ningún detalle.</p>
+          <button class="cta" data-reminder>Crear recordatorio</button>
+        </div>
+        <div class="image-block__photo"></div>
+      </section>
+
+      <section class="gallery">
+        <div class="gallery__item"></div>
+        <div class="gallery__item"></div>
+        <div class="gallery__item"></div>
+      </section>
+
+      <section class="section-card section-card--split">
+        <div class="section-card__photo"></div>
+        <div>
+          <h3>Comparte tus fotos</h3>
+          <p>Sube tus recuerdos con el hashtag #LaliyPepe y en nuestra app.</p>
+          <button class="cta cta--ghost" data-gallery>Subir fotos</button>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <h3>Confirmar aquí</h3>
+        <p>RSVP antes del 15 de octubre · Cupo limitado para niños.</p>
+        <form class="rsvp" data-rsvp>
+          <input type="text" name="name" placeholder="Nombre completo" required />
+          <input type="number" name="guests" min="1" max="5" placeholder="Número de invitados" required />
+          <button class="cta" type="submit">Confirmar asistencia</button>
+          <p class="rsvp__message" data-rsvp-message></p>
+        </form>
+      </section>
+
+      <section class="footer">
+        <p>Con amor, Lali &amp; Pepe</p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
