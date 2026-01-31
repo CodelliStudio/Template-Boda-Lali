@@ -1,22 +1,44 @@
-const weddingDate = new Date("2024-11-15T16:00:00");
 const countdown = document.querySelector("[data-countdown]");
 const daysEl = document.querySelector("[data-days]");
 const hoursEl = document.querySelector("[data-hours]");
 const minutesEl = document.querySelector("[data-minutes]");
 const secondsEl = document.querySelector("[data-seconds]");
 
+const parseWeddingDate = () => {
+  const dateValue = countdown?.dataset.date;
+  if (!dateValue) {
+    return null;
+  }
+  const baseDate = new Date(dateValue);
+  if (Number.isNaN(baseDate.getTime())) {
+    return null;
+  }
+
+  const now = new Date();
+  if (baseDate.getTime() < now.getTime()) {
+    const nextYear = new Date(baseDate);
+    nextYear.setFullYear(now.getFullYear() + 1);
+    return nextYear;
+  }
+  return baseDate;
+};
+
+const weddingDate = parseWeddingDate();
 const pad = (value) => String(value).padStart(2, "0");
 
 const updateCountdown = () => {
+  if (!weddingDate) {
+    return;
+  }
   const now = new Date();
   const diff = weddingDate.getTime() - now.getTime();
 
   if (diff <= 0) {
-    countdown.classList.add("countdown__timer--complete");
-    daysEl.textContent = "00";
-    hoursEl.textContent = "00";
-    minutesEl.textContent = "00";
-    secondsEl.textContent = "00";
+    countdown?.classList.add("countdown__timer--complete");
+    if (daysEl) daysEl.textContent = "00";
+    if (hoursEl) hoursEl.textContent = "00";
+    if (minutesEl) minutesEl.textContent = "00";
+    if (secondsEl) secondsEl.textContent = "00";
     return;
   }
 
@@ -26,10 +48,10 @@ const updateCountdown = () => {
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
-  daysEl.textContent = pad(days);
-  hoursEl.textContent = pad(hours);
-  minutesEl.textContent = pad(minutes);
-  secondsEl.textContent = pad(seconds);
+  if (daysEl) daysEl.textContent = pad(days);
+  if (hoursEl) hoursEl.textContent = pad(hours);
+  if (minutesEl) minutesEl.textContent = pad(minutes);
+  if (secondsEl) secondsEl.textContent = pad(seconds);
 };
 
 updateCountdown();
@@ -65,6 +87,8 @@ rsvpForm?.addEventListener("submit", (event) => {
   const name = formData.get("name");
   const guests = formData.get("guests");
 
-  rsvpMessage.textContent = `¡Gracias, ${name}! Hemos registrado ${guests} invitado(s).`;
+  if (rsvpMessage) {
+    rsvpMessage.textContent = `¡Gracias, ${name}! Hemos registrado ${guests} invitado(s).`;
+  }
   rsvpForm.reset();
 });
