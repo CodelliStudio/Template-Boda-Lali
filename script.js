@@ -6,13 +6,10 @@ const secondsEl = document.querySelector("[data-seconds]");
 
 const parseWeddingDate = () => {
   const dateValue = countdown?.dataset.date;
-  if (!dateValue) {
-    return null;
-  }
+  if (!dateValue) return null;
+
   const baseDate = new Date(dateValue);
-  if (Number.isNaN(baseDate.getTime())) {
-    return null;
-  }
+  if (Number.isNaN(baseDate.getTime())) return null;
 
   const now = new Date();
   if (baseDate.getTime() < now.getTime()) {
@@ -20,6 +17,7 @@ const parseWeddingDate = () => {
     nextYear.setFullYear(now.getFullYear() + 1);
     return nextYear;
   }
+
   return baseDate;
 };
 
@@ -27,9 +25,8 @@ const weddingDate = parseWeddingDate();
 const pad = (value) => String(value).padStart(2, "0");
 
 const updateCountdown = () => {
-  if (!weddingDate) {
-    return;
-  }
+  if (!weddingDate) return;
+
   const now = new Date();
   const diff = weddingDate.getTime() - now.getTime();
 
@@ -57,38 +54,11 @@ const updateCountdown = () => {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-const calendarButton = document.querySelector("[data-calendar]");
-const reminderButton = document.querySelector("[data-reminder]");
-const pinterestButton = document.querySelector("[data-pinterest]");
-const galleryButton = document.querySelector("[data-gallery]");
+const rsvpLink = document.querySelector("[data-rsvp-link]");
 
-calendarButton?.addEventListener("click", () => {
-  window.open("https://calendar.google.com", "_blank");
-});
-
-reminderButton?.addEventListener("click", () => {
-  window.open("https://calendar.google.com", "_blank");
-});
-
-pinterestButton?.addEventListener("click", () => {
-  window.open("https://www.pinterest.com", "_blank");
-});
-
-galleryButton?.addEventListener("click", () => {
-  alert("Muy pronto podrás subir tus fotos a nuestra galería.");
-});
-
-const rsvpForm = document.querySelector("[data-rsvp]");
-const rsvpMessage = document.querySelector("[data-rsvp-message]");
-
-rsvpForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const formData = new FormData(rsvpForm);
-  const name = formData.get("name");
-  const guests = formData.get("guests");
-
-  if (rsvpMessage) {
-    rsvpMessage.textContent = `¡Gracias, ${name}! Hemos registrado ${guests} invitado(s).`;
+rsvpLink?.addEventListener("click", (event) => {
+  if (rsvpLink.getAttribute("href") === "#") {
+    event.preventDefault();
+    alert("Cuando tengas tu formulario listo, pega aquí el enlace del RSVP.");
   }
-  rsvpForm.reset();
 });
