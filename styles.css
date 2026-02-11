@@ -1,0 +1,438 @@
+:root {
+  --paper: #f2efe8;
+  --paper-alt: #e9e5dc;
+  --ink: #161616;
+  --ink-soft: #353535;
+  --line: #b6b2aa;
+  --line-strong: #86827b;
+  --white: #f7f6f2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "EB Garamond", serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 5%, rgba(255, 255, 255, 0.4), transparent 24%),
+    radial-gradient(circle at 90% 0%, rgba(255, 255, 255, 0.25), transparent 28%),
+    linear-gradient(180deg, #ddd8cf 0%, #d4cfc5 100%);
+}
+
+.invitation {
+  width: 100%;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2600&q=80")
+    center 24% / cover no-repeat;
+  filter: grayscale(100%) contrast(102%);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  min-height: 90vh;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 64px 28px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero__logo {
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  line-height: 0.95;
+  font-size: clamp(2.8rem, 8vw, 7rem);
+  letter-spacing: 0.14rem;
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: clamp(3.2rem, 7.5vw, 6rem);
+  opacity: 0.95;
+}
+
+.hero__subtitle {
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+}
+
+.hero__date {
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.quote {
+  text-align: center;
+  background: #1f1f1f;
+  color: #f0ede5;
+  border-bottom: 1px solid #343434;
+  padding: 44px 20px;
+}
+
+.quote p {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 8px;
+}
+
+.quote span {
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.photo-band {
+  min-height: 44vh;
+  border-bottom: 1px solid var(--line);
+  background: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2400&q=80")
+    center/cover no-repeat;
+  filter: grayscale(100%);
+}
+
+.section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 74px 42px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h2 {
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.09rem;
+  margin-bottom: 38px;
+}
+
+.countdown {
+  background: var(--paper);
+}
+
+.countdown__timer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  gap: 14px;
+}
+
+.countdown__timer article {
+  background: #f8f5ef;
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 24px 8px;
+}
+
+.countdown__number {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  display: block;
+  line-height: 1;
+}
+
+.countdown__label {
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.14rem;
+}
+
+.countdown__timer--complete {
+  opacity: 0.7;
+}
+
+.story {
+  background: var(--paper-alt);
+  text-align: center;
+}
+
+.story p {
+  max-width: 920px;
+  margin: 0 auto;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.details {
+  background: var(--paper);
+}
+
+.details__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  text-align: center;
+  background: linear-gradient(180deg, #faf8f3, #efebe3);
+  border: 1px solid var(--line);
+  padding: 28px 20px;
+}
+
+.card__ornament {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-family: "Libre Baskerville", serif;
+  line-height: 1.5;
+  min-height: 42px;
+  color: var(--ink-soft);
+}
+
+.link-btn {
+  display: inline-block;
+  margin-top: 14px;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 10px 16px;
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.11rem;
+  font-size: 0.66rem;
+  transition: 0.2s ease;
+}
+
+.link-btn:hover {
+  background: var(--ink);
+  color: #f5f3ee;
+}
+
+.hotels {
+  background: var(--paper-alt);
+}
+
+.hotels__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.hotel-card {
+  border: 1px solid var(--line);
+  background: #f5f2eb;
+  padding: 26px 20px;
+  text-align: center;
+}
+
+.hotel-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.hotel-card p {
+  font-family: "Libre Baskerville", serif;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  min-height: 54px;
+}
+
+.gallery {
+  background: var(--paper);
+}
+
+.gallery__head {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.gallery__head p {
+  font-family: "Libre Baskerville", serif;
+  color: var(--ink-soft);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.gallery__item {
+  min-height: 320px;
+  border: 1px solid var(--line-strong);
+  filter: grayscale(100%);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.gallery__item:hover {
+  transform: translateY(-4px);
+  filter: grayscale(75%);
+}
+
+.gallery__item:nth-child(1) {
+  background: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80")
+    center/cover no-repeat;
+}
+
+.gallery__item:nth-child(2) {
+  background: url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=80")
+    center/cover no-repeat;
+}
+
+.gallery__item:nth-child(3) {
+  background: url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80")
+    center/cover no-repeat;
+}
+
+.gallery__item:nth-child(4) {
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80")
+    center/cover no-repeat;
+}
+
+.rsvp {
+  background: var(--paper-alt);
+  text-align: center;
+}
+
+.rsvp p {
+  max-width: 780px;
+  margin: 0 auto 24px;
+  font-family: "Libre Baskerville", serif;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.primary-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--ink);
+  color: #f4f2ed;
+  border: 1px solid var(--ink);
+  padding: 14px 24px;
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14rem;
+  font-size: 0.72rem;
+  transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+.footer {
+  background: #dcd7cd;
+  text-align: center;
+  padding: 34px 20px;
+}
+
+.footer__logo {
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-size: 0.84rem;
+}
+
+.footer__names {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.footer span {
+  font-family: "Libre Baskerville", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13rem;
+  font-size: 0.68rem;
+}
+
+@media (max-width: 1024px) {
+  .hero,
+  .hero__content {
+    min-height: 78vh;
+  }
+
+  .section {
+    padding: 56px 22px;
+  }
+
+  .countdown__timer,
+  .details__grid,
+  .hotels__grid,
+  .gallery__grid {
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .hero h1 {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .countdown__timer,
+  .details__grid,
+  .hotels__grid,
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery__item {
+    min-height: 250px;
+  }
+}
