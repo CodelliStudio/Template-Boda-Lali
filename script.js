@@ -1,49 +1,74 @@
-/* COUNTDOWN */
 const countdown = document.querySelector("[data-countdown]");
-const d = (q) => document.querySelector(q);
+const daysEl = document.querySelector("[data-days]");
+const hoursEl = document.querySelector("[data-hours]");
+const minutesEl = document.querySelector("[data-minutes]");
+const secondsEl = document.querySelector("[data-seconds]");
 
-const els = {
-  days: d("[data-days]"),
-  hours: d("[data-hours]"),
-  minutes: d("[data-minutes]"),
-  seconds: d("[data-seconds]")
+const parseWeddingDate = () => {
+  const dateValue = countdown?.dataset.date;
+  if (!dateValue) return null;
+
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return null;
+  return date;
 };
 
-const weddingDate = new Date("2026-11-07T16:00:00");
-const pad = (n) => String(n).padStart(2, "0");
+const weddingDate = parseWeddingDate();
+const pad = (value) => String(value).padStart(2, "0");
 
-function updateCountdown() {
-  const diff = weddingDate - new Date();
-  if (diff <= 0) return;
+const updateCountdown = () => {
+  if (!weddingDate) return;
 
-  const t = Math.floor(diff / 1000);
-  els.days.textContent = pad(Math.floor(t / 86400));
-  els.hours.textContent = pad(Math.floor((t % 86400) / 3600));
-  els.minutes.textContent = pad(Math.floor((t % 3600) / 60));
-  els.seconds.textContent = pad(t % 60);
-}
+  const now = new Date();
+  const diff = weddingDate.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    countdown?.classList.add("countdown__timer--complete");
+    if (daysEl) daysEl.textContent = "00";
+    if (hoursEl) hoursEl.textContent = "00";
+    if (minutesEl) minutesEl.textContent = "00";
+    if (secondsEl) secondsEl.textContent = "00";
+    return;
+  }
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (daysEl) daysEl.textContent = pad(days);
+  if (hoursEl) hoursEl.textContent = pad(hours);
+  if (minutesEl) minutesEl.textContent = pad(minutes);
+  if (secondsEl) secondsEl.textContent = pad(seconds);
+};
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* SCROLL REVEAL */
-const reveals = document.querySelectorAll(".reveal");
+const revealElements = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
+const revealObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("visible");
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
     });
   },
-  { threshold: 0.15 }
+  {
+    threshold: 0.14,
+  },
 );
 
-reveals.forEach((el) => observer.observe(el));
+revealElements.forEach((element) => revealObserver.observe(element));
 
-/* RSVP */
-document
-  .querySelector("[data-rsvp-link]")
-  ?.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("Aquí puedes colocar el enlace a tu formulario RSVP.");
-  });
+const rsvpLink = document.querySelector("[data-rsvp-link]");
+
+rsvpLink?.addEventListener("click", (event) => {
+  if (rsvpLink.getAttribute("href") === "#") {
+    event.preventDefault();
+    alert("Reemplaza este enlace con tu formulario RSVP cuando lo tengas listo.");
+  }
+});

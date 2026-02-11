@@ -3,181 +3,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Invitación | Javier & Laura</title>
-
-    <!-- TIPOGRAFÍAS ANTIGUAS -->
+    <title>Invitación de Boda | Javier & Laura</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
     <main class="invitation">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero__media"></div>
+      <section class="hero reveal">
+        <div class="hero__image" role="img" aria-label="Javier y Laura caminando en el campo"></div>
         <div class="hero__overlay"></div>
-        <div class="hero__grain"></div>
-
-        <div class="hero__content reveal">
-          <img
-            src="assets/logo-boda.png"
-            alt="Monograma Javier y Laura"
-            class="hero__logo"
-          />
-
-          <p class="hero__eyebrow">Wedding Invitation</p>
-
+        <div class="hero__content">
+          <p class="hero__logo">J &amp; L</p>
           <h1>
             <span>Javier</span>
-            <span class="amp">&amp;</span>
+            <em>&amp;</em>
             <span>Laura</span>
           </h1>
-
-          <p class="hero__subtitle">
-            Una celebración en blanco y negro · estilo vintage
-          </p>
-
-          <p class="hero__date">
-            Sábado · 07 de Noviembre de 2026
-          </p>
+          <p class="hero__subtitle">Nos casamos · Celebración en estilo clásico vintage</p>
+          <p class="hero__date">Sábado · 07 de Noviembre de 2026</p>
         </div>
       </section>
 
-      <!-- QUOTE -->
       <section class="quote reveal">
-        <p>“El amor nunca deja de ser.”</p>
-        <span>1 Corintios 13:8</span>
+        <p>“El amor es paciente, es bondadoso. El amor nunca deja de ser.”</p>
+        <span>1 Corintios 13:4-8</span>
       </section>
 
-      <!-- IMAGE BREAK -->
-      <section class="photo-band reveal"></section>
+      <section class="photo-band reveal" aria-label="Imagen romántica en blanco y negro"></section>
 
-      <!-- COUNTDOWN -->
-      <section class="countdown section reveal">
+      <section class="countdown section reveal" aria-label="Cuenta regresiva de la boda">
         <h2>Cuenta regresiva</h2>
-
-        <div
-          class="countdown__timer"
-          data-countdown
-          data-date="2026-11-07T16:00:00"
-        >
+        <div class="countdown__timer" data-countdown data-date="2026-11-07T16:00:00">
           <article>
-            <span data-days>00</span>
-            <small>Días</small>
+            <span class="countdown__number" data-days>00</span>
+            <span class="countdown__label">Días</span>
           </article>
           <article>
-            <span data-hours>00</span>
-            <small>Horas</small>
+            <span class="countdown__number" data-hours>00</span>
+            <span class="countdown__label">Horas</span>
           </article>
           <article>
-            <span data-minutes>00</span>
-            <small>Min</small>
+            <span class="countdown__number" data-minutes>00</span>
+            <span class="countdown__label">Min</span>
           </article>
           <article>
-            <span data-seconds>00</span>
-            <small>Seg</small>
+            <span class="countdown__number" data-seconds>00</span>
+            <span class="countdown__label">Seg</span>
           </article>
         </div>
       </section>
 
-      <!-- STORY -->
-      <section class="story reveal">
-        <div class="story__inner">
-          <h2>Nuestra historia</h2>
-          <p>
-            Con inmensa alegría queremos compartir con ustedes este momento tan
-            especial. Nuestro camino nos ha traído hasta aquí, y nada sería igual
-            sin las personas que amamos acompañándonos en este día.
-          </p>
-        </div>
+      <section class="story section reveal">
+        <h2>Nuestra historia</h2>
+        <p>
+          Después de años compartiendo sueños, viajes y pequeños momentos que se volvieron
+          inolvidables, decidimos celebrar nuestro amor con las personas más importantes de
+          nuestras vidas. Gracias por acompañarnos en este capítulo tan especial.
+        </p>
       </section>
 
-      <!-- DETAILS -->
       <section class="details section reveal">
-        <h2>El evento</h2>
-
+        <h2>Detalles del evento</h2>
         <div class="details__grid">
           <article class="card">
+            <div class="card__ornament">❦</div>
             <h3>Ceremonia</h3>
-            <p>4:00 PM · Hacienda Los Pinos</p>
-            <a href="#" class="link-btn">Ver ubicación</a>
+            <p>4:00 PM · Parroquia San Miguel Arcángel</p>
+            <a class="link-btn" href="#">Ver ubicación</a>
           </article>
-
           <article class="card">
+            <div class="card__ornament">✾</div>
             <h3>Vestimenta</h3>
-            <p>Vintage clásico · blanco, negro y marfil</p>
-            <a href="#" class="link-btn">Ver inspiración</a>
+            <p>Formal elegante · Tonos neutros y clásicos</p>
+            <a class="link-btn" href="#">Ver inspiración</a>
           </article>
-
           <article class="card">
+            <div class="card__ornament">✿</div>
             <h3>Recepción</h3>
-            <p>6:30 PM · Salón Encanto Antiguo</p>
-            <a href="#" class="link-btn">Ver detalles</a>
+            <p>7:00 PM · Hacienda Los Laureles</p>
+            <a class="link-btn" href="#">Ver ubicación</a>
           </article>
         </div>
       </section>
 
-      <!-- HOTELS -->
       <section class="hotels section reveal">
         <h2>Hoteles recomendados</h2>
-
-        <div class="details__grid">
-          <article class="card">
-            <h3>Hotel Antiguo Real</h3>
-            <p>A pocos minutos del evento</p>
-            <a href="#" class="link-btn">Ver ubicación</a>
+        <div class="hotels__grid">
+          <article class="hotel-card">
+            <h3>Hotel Casa Real</h3>
+            <p>A 10 minutos de la recepción · desayuno incluido</p>
+            <a class="link-btn" href="#">Ver ubicación</a>
           </article>
-
-          <article class="card">
-            <h3>Casa Boutique</h3>
-            <p>Encanto clásico y comodidad</p>
-            <a href="#" class="link-btn">Ver ubicación</a>
+          <article class="hotel-card">
+            <h3>Grand Boutique</h3>
+            <p>A 15 minutos de la ceremonia · tarifa preferencial</p>
+            <a class="link-btn" href="#">Ver ubicación</a>
           </article>
-
-          <article class="card">
-            <h3>Gran Hotel Central</h3>
-            <p>Estilo histórico · centro</p>
-            <a href="#" class="link-btn">Ver ubicación</a>
+          <article class="hotel-card">
+            <h3>Estancia Victoria</h3>
+            <p>A 8 minutos de la recepción · parking privado</p>
+            <a class="link-btn" href="#">Ver ubicación</a>
           </article>
         </div>
       </section>
 
-      <!-- GALLERY -->
       <section class="gallery section reveal">
-        <h2>Galería</h2>
+        <div class="gallery__head">
+          <h2>Galería</h2>
+          <p>Un vistazo del estilo de nuestra celebración.</p>
+        </div>
         <div class="gallery__grid">
-          <figure></figure>
-          <figure></figure>
-          <figure></figure>
-          <figure></figure>
+          <figure class="gallery__item"></figure>
+          <figure class="gallery__item"></figure>
+          <figure class="gallery__item"></figure>
+          <figure class="gallery__item"></figure>
         </div>
       </section>
 
-      <!-- RSVP -->
       <section class="rsvp section reveal">
-        <h2>Confirmar asistencia</h2>
+        <h2>RSVP</h2>
         <p>
-          Por favor confirma tu asistencia para acompañarnos en este día tan
-          especial.
+          Por favor confirma tu asistencia haciendo clic en el botón. Luego podrás reemplazar
+          este enlace con tu formulario final.
         </p>
-        <a href="#" class="primary-btn" data-rsvp-link>Confirmar aquí</a>
+        <a class="primary-btn" href="#" data-rsvp-link>Confirmar asistencia</a>
       </section>
 
-      <!-- FOOTER -->
-      <footer class="footer">
-        <img
-          src="assets/logo-boda.png"
-          alt="Monograma Javier y Laura"
-          class="footer__logo"
-        />
-        <p>Javier &amp; Laura</p>
-        <span>07 · Noviembre · 2026</span>
+      <footer class="footer reveal">
+        <p class="footer__logo">J &amp; L</p>
+        <p class="footer__names">Javier &amp; Laura</p>
+        <span>Sábado 07 de Noviembre de 2026</span>
       </footer>
     </main>
 
