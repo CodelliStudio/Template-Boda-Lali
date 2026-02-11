@@ -1,61 +1,104 @@
+/* =====================================================
+   VARIABLES
+===================================================== */
 :root {
   --bg: #d5d2cb;
+  --paper: #f4f2ec;
+  --paper-soft: #f8f6f1;
+  --paper-dark: #e8e5dd;
+
   --ink: #141414;
-  --ink-soft: #303030;
-  --paper: #efede7;
-  --line: #a8a59f;
+  --ink-soft: #2f2f2f;
+  --ink-muted: #5a5a5a;
+
+  --line: #b5b2ab;
+  --line-soft: #d2cfc7;
   --line-deep: #7f7c77;
-  --white: #f6f5f2;
-  --shadow: rgba(0, 0, 0, 0.22);
+
+  --white: #ffffff;
+  --black: #0f0f0f;
+
+  --shadow-xs: rgba(0, 0, 0, 0.04);
+  --shadow-sm: rgba(0, 0, 0, 0.08);
+  --shadow-md: rgba(0, 0, 0, 0.14);
+  --shadow-lg: rgba(0, 0, 0, 0.22);
 }
 
+/* =====================================================
+   RESET
+===================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* =====================================================
+   BASE
+===================================================== */
 body {
   min-height: 100vh;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "EB Garamond", serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.5), transparent 25%),
-    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.3), transparent 30%),
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.45), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.25), transparent 40%),
     linear-gradient(180deg, #e3e0d9 0%, var(--bg) 100%);
 }
 
-.invitation {
-  width: 100%;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: #f4f2ec;
+/* GRANO MUY SUTIL */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#000 0.4px, transparent 0.4px);
+  background-size: 4px 4px;
+  opacity: 0.03;
+  z-index: 9999;
 }
 
+/* =====================================================
+   CONTENEDOR GENERAL
+===================================================== */
+.invitation {
+  width: 100%;
+  background: var(--paper);
+}
+
+/* =====================================================
+   HERO (SE QUEDA CENTRADO)
+===================================================== */
 .hero {
   position: relative;
   min-height: 92vh;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
+  color: var(--white);
 }
 
 .hero__media {
   position: absolute;
   inset: 0;
-  background: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2600&q=80") center 24% / cover no-repeat;
+  background:
+    url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2600&q=80")
+    center 28% / cover no-repeat;
   filter: grayscale(100%) contrast(102%);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.75)
+  );
 }
 
 .hero__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.16;
+  opacity: 0.15;
   background-image: radial-gradient(#fff 0.45px, transparent 0.45px);
   background-size: 3px 3px;
   mix-blend-mode: soft-light;
@@ -67,320 +110,329 @@ body {
   min-height: 92vh;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 64px 40px;
+  padding: 80px 40px;
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 18px;
+  gap: 20px;
   text-align: center;
-  color: var(--white);
+}
+
+.hero__logo {
+  width: 180px;
+  margin-bottom: 10px;
 }
 
 .hero__eyebrow {
-  font-family: "Inter", sans-serif;
-  letter-spacing: 0.45rem;
-  text-transform: uppercase;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.7rem;
-  opacity: 0.9;
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 .hero h1 {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
-  font-family: "Bodoni Moda", serif;
+  gap: 1rem;
+  font-size: clamp(3rem, 7.5vw, 6rem);
   font-weight: 500;
-  font-size: clamp(3rem, 8.2vw, 8rem);
-  line-height: 0.95;
-  letter-spacing: 0.14rem;
-  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.12rem;
+  line-height: 1;
 }
 
-.hero h1 em {
-  font-family: "Great Vibes", cursive;
-  font-style: normal;
-  font-size: clamp(4rem, 9vw, 8.5rem);
-  transform: translateY(-0.12em);
+.hero h1 .amp {
+  font-style: italic;
+  font-size: 0.75em;
+  opacity: 0.65;
+  transform: translateY(-0.05em);
 }
 
 .hero__subtitle {
-  font-size: clamp(1.1rem, 1.7vw, 1.6rem);
-  letter-spacing: 0.06rem;
+  max-width: 560px;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  opacity: 0.95;
 }
 
 .hero__date {
-  font-family: "Inter", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.45);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-  padding: 12px 18px;
-}
-
-.quote {
-  text-align: center;
-  padding: 42px 18px;
-  background: #e8e5dd;
-  border-bottom: 1px solid var(--line);
-}
-
-.quote p {
-  font-size: clamp(1.8rem, 3.3vw, 2.7rem);
-  margin-bottom: 8px;
-}
-
-.quote span {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.75rem;
   letter-spacing: 0.22rem;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
+/* =====================================================
+   SECCIONES GENERALES
+===================================================== */
 .section {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 72px 48px;
+  padding: 96px 48px;
 }
 
 .section h2 {
   text-align: center;
-  font-family: "Bodoni Moda", serif;
-  font-size: clamp(2rem, 3.6vw, 3.8rem);
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
   font-weight: 500;
   letter-spacing: 0.12rem;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
+/* =====================================================
+   QUOTE
+===================================================== */
+.quote {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 84px 28px;
+}
+
+.quote p {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  margin-bottom: 10px;
+}
+
+.quote span {
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* =====================================================
+   PHOTO BAND
+===================================================== */
+.photo-band {
+  min-height: 52vh;
+  background:
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2400&q=80")
+    center / cover no-repeat;
+  filter: grayscale(100%);
+}
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
 .countdown {
-  border-bottom: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--paper-dark);
 }
 
 .countdown__timer {
   display: grid;
   grid-template-columns: repeat(4, minmax(140px, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .countdown__timer article {
+  background: var(--paper-soft);
   border: 1px solid var(--line);
-  background: #f8f6f1;
+  padding: 28px 16px;
   text-align: center;
-  padding: 22px 12px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 16px var(--shadow-sm);
 }
 
-.countdown__number {
-  font-family: "Bodoni Moda", serif;
-  font-size: clamp(2rem, 3.2vw, 3.2rem);
+.countdown__timer span {
   display: block;
-  line-height: 1;
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
 }
 
-.countdown__label {
-  font-family: "Inter", sans-serif;
+.countdown__timer small {
+  font-family: "Libre Baskerville", serif;
   font-size: 0.65rem;
   letter-spacing: 0.18rem;
   text-transform: uppercase;
 }
 
-.countdown__timer--complete {
-  opacity: 0.7;
+/* =====================================================
+   STORY
+===================================================== */
+.story {
+  background: var(--paper);
 }
 
-.details {
-  border-bottom: 1px solid var(--line);
+.story__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+.story p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+/* =====================================================
+   DETAILS / HOTELES
+===================================================== */
 .details__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: 24px;
+  gap: 32px;
 }
 
 .card {
-  border: 1px solid var(--line);
-  padding: 28px 24px;
+  background: linear-gradient(180deg, #faf9f6, #efede7);
+  border: 1px solid var(--line-soft);
+  padding: 38px 30px;
   text-align: center;
-  background: linear-gradient(180deg, #f8f6f1, #efede7);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.card__flower {
-  font-size: 2rem;
-  margin-bottom: 8px;
+  box-shadow: 0 14px 30px var(--shadow-sm);
 }
 
 .card h3 {
   font-size: 2rem;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .card p {
-  font-family: "Inter", sans-serif;
-  color: #2f2f2f;
-  min-height: 42px;
-  line-height: 1.45;
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
 
 .link-btn {
   display: inline-block;
-  margin-top: 14px;
-  text-decoration: none;
-  font-family: "Inter", sans-serif;
+  margin-top: 18px;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.7rem;
+  letter-spacing: 0.16rem;
   text-transform: uppercase;
-  letter-spacing: 0.14rem;
-  color: #111;
-  border: 1px solid #111;
-  padding: 10px 16px;
-  transition: 0.2s ease;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  text-decoration: none;
 }
 
 .link-btn:hover {
-  background: #111;
-  color: #f6f5f2;
+  opacity: 0.6;
 }
 
-.photo-band {
-  min-height: 46vh;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=80") center/cover no-repeat;
-  filter: grayscale(100%);
-}
-
+/* =====================================================
+   GALLERY
+===================================================== */
 .gallery {
-  border-bottom: 1px solid var(--line);
-  background: #ebe8e0;
-}
-
-.gallery__head {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.gallery__head p {
-  font-family: "Inter", sans-serif;
-  color: #2f2f2f;
+  background: var(--paper-dark);
 }
 
 .gallery__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(180px, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
-.gallery__item {
-  min-height: 320px;
-  border: 1px solid var(--line-deep);
+.gallery__grid figure {
+  min-height: 280px;
+  background: #ccc;
   filter: grayscale(100%);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 20px var(--shadow-md);
+  transition: transform 0.35s ease;
 }
 
-.gallery__item:nth-child(1) {
-  background: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
+.gallery__grid figure:hover {
+  transform: translateY(-4px);
 }
 
-.gallery__item:nth-child(2) {
-  background: url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.gallery__item:nth-child(3) {
-  background: url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
-.gallery__item:nth-child(4) {
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80") center/cover no-repeat;
-}
-
+/* =====================================================
+   RSVP
+===================================================== */
 .rsvp {
-  text-align: center;
-  border-bottom: 1px solid var(--line);
   background: var(--paper);
-}
-
-.rsvp p {
-  max-width: 760px;
-  margin: 0 auto 28px;
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
-  color: #2f2f2f;
+  text-align: center;
 }
 
 .primary-btn {
   display: inline-block;
+  margin-top: 20px;
+  padding: 14px 34px;
+  background: var(--ink);
+  color: var(--white);
   text-decoration: none;
-  border: 1px solid #111;
-  background: #111;
-  color: #f4f4f2;
-  padding: 14px 26px;
-  text-transform: uppercase;
-  letter-spacing: 0.18rem;
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.72rem;
-  transition: all 0.2s ease;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
 }
 
 .primary-btn:hover {
-  background: transparent;
-  color: #111;
+  opacity: 0.85;
 }
 
+/* =====================================================
+   FOOTER
+===================================================== */
 .footer {
+  background: var(--black);
+  color: var(--white);
   text-align: center;
-  padding: 34px 20px;
-  background: #ddd9d1;
+  padding: 96px 20px;
+}
+
+.footer__logo {
+  width: 130px;
+  margin-bottom: 22px;
 }
 
 .footer p {
-  font-family: "Bodoni Moda", serif;
-  font-size: 2rem;
+  font-size: 2.1rem;
+  letter-spacing: 0.12rem;
 }
 
 .footer span {
-  font-family: "Inter", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 0.72rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.22rem;
   text-transform: uppercase;
+  opacity: 0.8;
 }
 
-@media (max-width: 1024px) {
-  .hero,
-  .hero__content {
-    min-height: 76vh;
-  }
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 1024px) {
   .section {
-    padding: 54px 24px;
+    padding: 72px 28px;
   }
 
   .details__grid,
-  .countdown__timer,
-  .gallery__grid {
-    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  .gallery__grid,
+  .countdown__timer {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   .hero h1 {
     flex-direction: column;
     gap: 0;
   }
 
   .details__grid,
-  .countdown__timer,
-  .gallery__grid {
+  .gallery__grid,
+  .countdown__timer {
     grid-template-columns: 1fr;
   }
 
-  .gallery__item {
-    min-height: 250px;
-  }
-
-  .hero__content {
-    padding: 40px 18px;
+  .gallery__grid figure {
+    min-height: 220px;
   }
 }
