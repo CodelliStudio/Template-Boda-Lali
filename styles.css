@@ -69,7 +69,8 @@ h3 {
 
 .hero {
   position: relative;
-  min-height: 96vh;
+  min-height: 100vh;
+  overflow: hidden;
   display: grid;
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -85,7 +86,8 @@ h3 {
 .hero__image {
   background: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2800&q=80") center 42% / cover no-repeat;
   filter: grayscale(100%) contrast(98%);
-  transform: scale(1.02);
+  transform: none;
+  will-change: transform;
 }
 
 .hero__overlay {
@@ -420,7 +422,7 @@ h3 {
 
 .gallery__item:hover {
   transform: translateY(-5px);
-  filter: grayscale(64%);
+  filter: grayscale(50%);
   box-shadow: var(--shadow-mid);
 }
 
@@ -559,4 +561,11 @@ h3 {
     gap: 4px;
     padding-inline: 24px;
   }
+}
+
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
