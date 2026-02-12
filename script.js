@@ -4,26 +4,25 @@ const hoursEl = document.querySelector("[data-hours]");
 const minutesEl = document.querySelector("[data-minutes]");
 const secondsEl = document.querySelector("[data-seconds]");
 
-const parseWeddingDate = () => {
-  const dateValue = countdown?.dataset.date;
-  if (!dateValue) return null;
+const parseTargetDate = () => {
+  const raw = countdown?.dataset.date;
+  if (!raw) return null;
 
-  const date = new Date(dateValue);
-  if (Number.isNaN(date.getTime())) return null;
-  return date;
+  const parsed = new Date(raw);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed;
 };
 
-const weddingDate = parseWeddingDate();
+const targetDate = parseTargetDate();
 const pad = (value) => String(value).padStart(2, "0");
 
 const updateCountdown = () => {
-  if (!weddingDate) return;
+  if (!targetDate) return;
 
   const now = new Date();
-  const diff = weddingDate.getTime() - now.getTime();
+  const diff = targetDate.getTime() - now.getTime();
 
   if (diff <= 0) {
-    countdown?.classList.add("countdown__timer--complete");
     if (daysEl) daysEl.textContent = "00";
     if (hoursEl) hoursEl.textContent = "00";
     if (minutesEl) minutesEl.textContent = "00";
@@ -31,11 +30,11 @@ const updateCountdown = () => {
     return;
   }
 
-  const totalSeconds = Math.floor(diff / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
+  const total = Math.floor(diff / 1000);
+  const days = Math.floor(total / 86400);
+  const hours = Math.floor((total % 86400) / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
 
   if (daysEl) daysEl.textContent = pad(days);
   if (hoursEl) hoursEl.textContent = pad(hours);
@@ -47,7 +46,6 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 const revealElements = document.querySelectorAll(".reveal");
-
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -57,18 +55,17 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  {
-    threshold: 0.14,
-  },
+  { threshold: 0.15 }
 );
 
-revealElements.forEach((element) => revealObserver.observe(element));
+revealElements.forEach((el) => revealObserver.observe(el));
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
-
-rsvpLink?.addEventListener("click", (event) => {
-  if (rsvpLink.getAttribute("href") === "#") {
-    event.preventDefault();
-    alert("Reemplaza este enlace con tu formulario RSVP cuando lo tengas listo.");
-  }
-});
+if (rsvpLink) {
+  rsvpLink.addEventListener("click", (event) => {
+    if (rsvpLink.getAttribute("href") === "#") {
+      event.preventDefault();
+      alert("Cuando tengas tu formulario, reemplaza el # por tu enlace de RSVP.");
+    }
+  });
+}
