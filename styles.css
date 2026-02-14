@@ -24,14 +24,11 @@
 
 html,
 body {
-  width: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
+  overflow-x: clip;
 }
 
 body {
+  position: relative;
   font-family: "EB Garamond", serif;
   color: var(--ink);
   background:
@@ -41,9 +38,22 @@ body {
   line-height: 1.5;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(55, 45, 28, 0.08) 0.45px, transparent 0.45px);
+  background-size: 3px 3px;
+  opacity: 0.28;
+  z-index: 0;
+}
+
 .site-shell {
+  position: relative;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
+  z-index: 1;
 }
 
 .section-wrap {
@@ -73,11 +83,10 @@ h3 {
 
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 720px;
-  overflow: hidden;
+  min-height: 96vh;
   display: grid;
   align-items: center;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
 
@@ -91,8 +100,7 @@ h3 {
 .hero__image {
   background: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2800&q=80") center 42% / cover no-repeat;
   filter: grayscale(100%) contrast(98%);
-  transform: none;
-  will-change: transform;
+  transform: scale(1.02);
 }
 
 .hero__overlay {
@@ -221,7 +229,19 @@ h3 {
 }
 
 .section {
+  position: relative;
   padding: clamp(64px, 9vw, 88px) 0;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(320px, 62%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(132, 109, 74, 0.55), transparent);
 }
 
 .section h2 {
@@ -245,12 +265,10 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
-/* FIX PRINCIPAL: Cambiar minmax para evitar overflow */
 .countdown__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
   gap: 14px;
-  max-width: 100%;
 }
 
 .countdown__grid article {
@@ -260,7 +278,6 @@ h3 {
   text-align: center;
   padding: 22px 8px;
   box-shadow: var(--shadow-soft);
-  min-width: 0;
 }
 
 .countdown__grid strong {
@@ -322,12 +339,10 @@ h3 {
   background: var(--paper);
 }
 
-/* FIX: Asegurar que las cards no causen overflow */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 18px;
-  max-width: 100%;
 }
 
 .card {
@@ -340,7 +355,6 @@ h3 {
     radial-gradient(circle at top right, rgba(221, 188, 132, 0.24), transparent 52%);
   box-shadow: var(--shadow-soft);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  min-width: 0;
 }
 
 .card:hover {
@@ -372,6 +386,13 @@ h3 {
   letter-spacing: 0.12rem;
   font-size: 0.7rem;
   transition: all 0.25s ease;
+}
+
+.btn-link::after,
+.btn-main::after {
+  content: "›";
+  font-size: 0.95rem;
+  transform: translateY(-0.02em);
 }
 
 .btn-link {
@@ -415,12 +436,10 @@ h3 {
   box-shadow: 0 15px 28px rgba(15, 15, 15, 0.34);
 }
 
-/* FIX: Asegurar que la galería no cause overflow */
 .gallery__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
   gap: 12px;
-  max-width: 100%;
 }
 
 .gallery__item {
@@ -431,12 +450,11 @@ h3 {
   filter: grayscale(100%);
   box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-  min-width: 0;
 }
 
 .gallery__item:hover {
   transform: translateY(-5px);
-  filter: grayscale(50%);
+  filter: grayscale(64%);
   box-shadow: var(--shadow-mid);
 }
 
@@ -477,6 +495,15 @@ h3 {
   background:
     radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.42), transparent 50%),
     linear-gradient(180deg, #ddd2be, #ccbca1);
+}
+
+.footer::before {
+  content: "✦  ❦  ✦";
+  display: block;
+  text-align: center;
+  color: rgba(85, 69, 45, 0.74);
+  letter-spacing: 0.4rem;
+  padding-top: 14px;
 }
 
 .footer__inner {
@@ -520,12 +547,6 @@ h3 {
 }
 
 @media (max-width: 1024px) {
-  html, body {
-    height: 100%;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-
   .hero {
     min-height: 88vh;
   }
@@ -537,7 +558,7 @@ h3 {
   .cards,
   .countdown__grid,
   .gallery__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
   }
 
   .rsvp__panel,
