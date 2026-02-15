@@ -71,8 +71,10 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
   revealElements.forEach((el) => el.classList.add("is-visible"));
 }
 
-const gallerySection = document.querySelector(".gallery");
-const galleryItems = [...document.querySelectorAll(".gallery__item")];
+const gallerySection = document.querySelector(".gallery, [data-gallery]");
+const galleryItems = [
+  ...document.querySelectorAll(".gallery__item, .gallery-item, [data-gallery-item]")
+];
 
 const activateGalleryItem = (index) => {
   if (!galleryItems.length) return;
@@ -86,22 +88,22 @@ const activateGalleryItem = (index) => {
 const updateGalleryByScroll = () => {
   if (!galleryItems.length) return;
 
-  if (!gallerySection) {
-    activateGalleryItem(0);
-    return;
-  }
+  const viewportCenter = window.innerHeight * 0.56;
+  let closestIndex = 0;
+  let closestDistance = Number.POSITIVE_INFINITY;
 
-  const sectionRect = gallerySection.getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
+  galleryItems.forEach((item, index) => {
+    const rect = item.getBoundingClientRect();
+    const itemCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(itemCenter - viewportCenter);
 
-  const start = viewportHeight * 0.85;
-  const end = -sectionRect.height * 0.35;
-  const totalRange = start - end;
-  const progress = (start - sectionRect.top) / totalRange;
-  const boundedProgress = Math.max(0, Math.min(progress, 1));
-  const index = Math.round(boundedProgress * (galleryItems.length - 1));
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = index;
+    }
+  });
 
-  activateGalleryItem(index);
+  activateGalleryItem(closestIndex);
 };
 
 if (galleryItems.length) {
@@ -119,6 +121,23 @@ if (galleryItems.length) {
   window.addEventListener("scroll", onGalleryScroll, { passive: true });
   window.addEventListener("resize", onGalleryScroll);
   window.addEventListener("load", onGalleryScroll);
+
+  if ("IntersectionObserver" in window) {
+    const galleryObserver = new IntersectionObserver(
+      () => onGalleryScroll(),
+      {
+        root: null,
+        threshold: [0.2, 0.45, 0.7],
+        rootMargin: "0px 0px -8% 0px"
+      }
+    );
+
+    galleryItems.forEach((item) => galleryObserver.observe(item));
+    if (gallerySection) {
+      galleryObserver.observe(gallerySection);
+    }
+  }
+
   onGalleryScroll();
 }
 
