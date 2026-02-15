@@ -45,20 +45,73 @@ const updateCountdown = () => {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-const revealElements = document.querySelectorAll(".reveal");
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
+const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+const isSmallScreen = window.matchMedia("(max-width: 820px)").matches;
+const disableRevealMotion = reduceMotionQuery.matches || (isTouchDevice && isSmallScreen);
 
-revealElements.forEach((el) => revealObserver.observe(el));
+if (disableRevealMotion) {
+  document.body.classList.add("no-motion");
+}
+
+const revealElements = document.querySelectorAll(".reveal");
+if (!disableRevealMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
+  );
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+} else {
+  revealElements.forEach((el) => el.classList.add("is-visible"));
+}
+
+const galleryItems = [...document.querySelectorAll(".gallery__item")];
+
+let galleryTicking = false;
+const updateGalleryActiveByScroll = () => {
+  if (!galleryItems.length) return;
+
+  const viewportCenter = window.innerHeight * 0.58;
+  let nearest = null;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+
+  galleryItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const elementCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(elementCenter - viewportCenter);
+
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      nearest = item;
+    }
+  });
+
+  galleryItems.forEach((item) => item.classList.remove("is-active"));
+  if (nearest) {
+    nearest.classList.add("is-active");
+  }
+};
+
+const onScrollGallery = () => {
+  if (galleryTicking) return;
+  galleryTicking = true;
+  requestAnimationFrame(() => {
+    updateGalleryActiveByScroll();
+    galleryTicking = false;
+  });
+};
+
+window.addEventListener("scroll", onScrollGallery, { passive: true });
+window.addEventListener("resize", onScrollGallery);
+updateGalleryActiveByScroll();
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
 if (rsvpLink) {
