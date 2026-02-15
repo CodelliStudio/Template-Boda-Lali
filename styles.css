@@ -14,6 +14,7 @@
   --light: #fcfbf8;
   --shadow-soft: 0 10px 28px rgba(22, 18, 11, 0.1);
   --shadow-mid: 0 16px 36px rgba(22, 18, 11, 0.16);
+  --grain: radial-gradient(rgba(74, 58, 31, 0.07) 0.45px, transparent 0.45px);
 }
 
 * {
@@ -35,6 +36,7 @@ body {
     radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.7), transparent 22%),
     radial-gradient(circle at 80% 12%, rgba(220, 193, 148, 0.26), transparent 28%),
     linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 60%, #d9cfbc 100%);
+  background-attachment: fixed;
   line-height: 1.5;
 }
 
@@ -43,7 +45,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(55, 45, 28, 0.08) 0.45px, transparent 0.45px);
+  background-image: var(--grain);
   background-size: 3px 3px;
   opacity: 0.28;
   z-index: 0;
@@ -185,8 +187,19 @@ h3 {
   border: 1px solid rgba(176, 156, 123, 0.58);
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
   padding-top: 34px;
   padding-bottom: 34px;
+}
+
+.quote__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.22), transparent 40%), var(--grain);
+  opacity: 0.35;
 }
 
 .quote__mark {
@@ -242,6 +255,15 @@ h3 {
   width: min(320px, 62%);
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(132, 109, 74, 0.55), transparent);
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04));
+  opacity: 0.45;
 }
 
 .section h2 {
@@ -331,7 +353,10 @@ h3 {
 
 .details,
 .gallery {
-  background: var(--paper-3);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(224, 197, 154, 0.22), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.26), transparent 30%),
+    var(--paper-3);
 }
 
 .hotels,
@@ -345,6 +370,12 @@ h3 {
   gap: 18px;
 }
 
+.cards--hotels {
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  max-width: 920px;
+  margin: 0 auto;
+}
+
 .card {
   border: 1px solid rgba(177, 154, 116, 0.66);
   border-radius: 16px;
@@ -354,7 +385,18 @@ h3 {
     linear-gradient(180deg, rgba(255, 252, 244, 0.98), rgba(242, 229, 205, 0.93)),
     radial-gradient(circle at top right, rgba(221, 188, 132, 0.24), transparent 52%);
   box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.3), transparent 38%), var(--grain);
+  opacity: 0.35;
 }
 
 .card:hover {
@@ -480,8 +522,19 @@ h3 {
   border: 1px solid rgba(181, 152, 103, 0.56);
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
   padding-top: clamp(36px, 5vw, 52px);
   padding-bottom: clamp(36px, 5vw, 52px);
+}
+
+.rsvp__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.28), transparent 45%), var(--grain);
+  opacity: 0.25;
 }
 
 .rsvp p {
@@ -561,6 +614,10 @@ h3 {
     grid-template-columns: repeat(2, minmax(160px, 1fr));
   }
 
+  .cards--hotels {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+
   .rsvp__panel,
   .story__panel,
   .quote__card {
@@ -589,7 +646,8 @@ h3 {
 
   .cards,
   .countdown__grid,
-  .gallery__grid {
+  .gallery__grid,
+  .cards--hotels {
     grid-template-columns: 1fr;
   }
 
