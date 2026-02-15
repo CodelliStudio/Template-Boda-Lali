@@ -100,7 +100,7 @@ h3 {
 }
 
 .hero__image {
-  background: url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2800&q=80") center 42% / cover no-repeat;
+  background: url("assets/L&P5908.jpg") center 42% / cover no-repeat;
   filter: grayscale(100%) contrast(98%);
   transform: scale(1.02);
 }
@@ -233,11 +233,11 @@ h3 {
 }
 
 .photo-band {
-  min-height: 44vh;
+  min-height: 40vh;
   border-bottom: 1px solid var(--line);
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
-    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2600&q=80") center/cover no-repeat;
+    url("assets/L&P5974.jpg") center 30%/cover no-repeat;
   filter: grayscale(100%);
 }
 
@@ -501,19 +501,31 @@ h3 {
 }
 
 .gallery__item:nth-child(1) {
-  background: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  background-image: url("assets/L&P5918.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 90%;
 }
 
 .gallery__item:nth-child(2) {
-  background: url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  background-image: url("assets/L&P5905.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 90%;
 }
 
 .gallery__item:nth-child(3) {
-  background: url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  background-image: url("assets/L&P5922.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 90%;
 }
 
 .gallery__item:nth-child(4) {
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  background-image: url("assets/L&P5971.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 50%;
 }
 
 .rsvp__panel {
