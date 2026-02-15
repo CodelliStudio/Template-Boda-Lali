@@ -432,7 +432,6 @@ h3 {
 
 .btn-link::after,
 .btn-main::after {
-  content: "›";
   font-size: 0.95rem;
   transform: translateY(-0.02em);
 }
