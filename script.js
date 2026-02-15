@@ -46,9 +46,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-const isSmallScreen = window.matchMedia("(max-width: 820px)").matches;
-const disableRevealMotion = reduceMotionQuery.matches || (isTouchDevice && isSmallScreen);
+const disableRevealMotion = reduceMotionQuery.matches;
 
 if (disableRevealMotion) {
   document.body.classList.add("no-motion");
@@ -65,7 +63,7 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
+    { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
   );
 
   revealElements.forEach((el) => revealObserver.observe(el));
@@ -73,45 +71,56 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
   revealElements.forEach((el) => el.classList.add("is-visible"));
 }
 
+const gallerySection = document.querySelector(".gallery");
 const galleryItems = [...document.querySelectorAll(".gallery__item")];
 
-let galleryTicking = false;
-const updateGalleryActiveByScroll = () => {
+const activateGalleryItem = (index) => {
   if (!galleryItems.length) return;
 
-  const viewportCenter = window.innerHeight * 0.58;
-  let nearest = null;
-  let nearestDistance = Number.POSITIVE_INFINITY;
-
-  galleryItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const elementCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(elementCenter - viewportCenter);
-
-    if (distance < nearestDistance) {
-      nearestDistance = distance;
-      nearest = item;
-    }
+  const clampedIndex = Math.max(0, Math.min(index, galleryItems.length - 1));
+  galleryItems.forEach((item, itemIndex) => {
+    item.classList.toggle("is-active", itemIndex === clampedIndex);
   });
+};
 
-  galleryItems.forEach((item) => item.classList.remove("is-active"));
-  if (nearest) {
-    nearest.classList.add("is-active");
+const updateGalleryByScroll = () => {
+  if (!galleryItems.length) return;
+
+  if (!gallerySection) {
+    activateGalleryItem(0);
+    return;
   }
+
+  const sectionRect = gallerySection.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+
+  const start = viewportHeight * 0.85;
+  const end = -sectionRect.height * 0.35;
+  const totalRange = start - end;
+  const progress = (start - sectionRect.top) / totalRange;
+  const boundedProgress = Math.max(0, Math.min(progress, 1));
+  const index = Math.round(boundedProgress * (galleryItems.length - 1));
+
+  activateGalleryItem(index);
 };
 
-const onScrollGallery = () => {
-  if (galleryTicking) return;
-  galleryTicking = true;
-  requestAnimationFrame(() => {
-    updateGalleryActiveByScroll();
-    galleryTicking = false;
-  });
-};
+if (galleryItems.length) {
+  let galleryTicking = false;
 
-window.addEventListener("scroll", onScrollGallery, { passive: true });
-window.addEventListener("resize", onScrollGallery);
-updateGalleryActiveByScroll();
+  const onGalleryScroll = () => {
+    if (galleryTicking) return;
+    galleryTicking = true;
+    requestAnimationFrame(() => {
+      updateGalleryByScroll();
+      galleryTicking = false;
+    });
+  };
+
+  window.addEventListener("scroll", onGalleryScroll, { passive: true });
+  window.addEventListener("resize", onGalleryScroll);
+  window.addEventListener("load", onGalleryScroll);
+  onGalleryScroll();
+}
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
 if (rsvpLink) {
