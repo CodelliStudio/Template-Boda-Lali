@@ -45,6 +45,11 @@ const updateCountdown = () => {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+
+/* ===============================
+   REVEAL
+================================= */
+
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const disableRevealMotion = reduceMotionQuery.matches;
 
@@ -53,13 +58,14 @@ if (disableRevealMotion) {
 }
 
 const revealElements = document.querySelectorAll(".reveal");
+
 if (!disableRevealMotion && "IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -71,15 +77,18 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
   revealElements.forEach((el) => el.classList.add("is-visible"));
 }
 
-const gallerySection = document.querySelector(".gallery, [data-gallery]");
+
+/* ===============================
+    GALLERY (CENTRO ACTIVO ESTABLE)
+================================= */
+
 const galleryItems = [
-  ...document.querySelectorAll(".gallery__item, .gallery-item, [data-gallery-item]")
+  ...document.querySelectorAll(".gallery__item")
 ];
 
-const activateGalleryItem = (index) => {
-  if (!galleryItems.length) return;
-
+  const activateGalleryItem = (index) => {
   const clampedIndex = Math.max(0, Math.min(index, galleryItems.length - 1));
+
   galleryItems.forEach((item, itemIndex) => {
     item.classList.toggle("is-active", itemIndex === clampedIndex);
   });
@@ -88,12 +97,16 @@ const activateGalleryItem = (index) => {
 const updateGalleryByScroll = () => {
   if (!galleryItems.length) return;
 
-  const viewportCenter = window.innerHeight * 0.56;
+  const viewportCenter = window.innerHeight * 0.55;
   let closestIndex = 0;
-  let closestDistance = Number.POSITIVE_INFINITY;
+  let closestDistance = Infinity;
 
   galleryItems.forEach((item, index) => {
     const rect = item.getBoundingClientRect();
+
+    // Ignorar elementos fuera de viewport
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
     const itemCenter = rect.top + rect.height / 2;
     const distance = Math.abs(itemCenter - viewportCenter);
 
@@ -107,39 +120,30 @@ const updateGalleryByScroll = () => {
 };
 
 if (galleryItems.length) {
-  let galleryTicking = false;
+  let ticking = false;
 
   const onGalleryScroll = () => {
-    if (galleryTicking) return;
-    galleryTicking = true;
-    requestAnimationFrame(() => {
-      updateGalleryByScroll();
-      galleryTicking = false;
-    });
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateGalleryByScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
   };
 
   window.addEventListener("scroll", onGalleryScroll, { passive: true });
   window.addEventListener("resize", onGalleryScroll);
   window.addEventListener("load", onGalleryScroll);
 
-  if ("IntersectionObserver" in window) {
-    const galleryObserver = new IntersectionObserver(
-      () => onGalleryScroll(),
-      {
-        root: null,
-        threshold: [0.2, 0.45, 0.7],
-        rootMargin: "0px 0px -8% 0px"
-      }
-    );
-
-    galleryItems.forEach((item) => galleryObserver.observe(item));
-    if (gallerySection) {
-      galleryObserver.observe(gallerySection);
-    }
-  }
-
-  onGalleryScroll();
+  // Eliminamos el IntersectionObserver que generaba conflicto
+  updateGalleryByScroll();
 }
+
+
+/* ===============================
+    RSVP
+================================= */
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
 if (rsvpLink) {

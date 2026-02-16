@@ -499,6 +499,12 @@ h3 {
   box-shadow: var(--shadow-mid);
 }
 
+.gallery__item.is-active {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+  box-shadow: var(--shadow-mid);
+}
+
 .gallery__item:nth-child(1) {
   background-image: url("assets/L&P5918.jpg");
   background-size: cover;
