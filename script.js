@@ -79,47 +79,47 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
 
 
 /* ===============================
-    GALLERY (CENTRO ACTIVO ESTABLE)
+   GALLERY (Desktop hover / Mobile scroll)
 ================================= */
 
 const galleryItems = [
   ...document.querySelectorAll(".gallery__item")
 ];
 
+// Detectar si es dispositivo con hover real (desktop)
+const hasRealHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+if (!hasRealHover && galleryItems.length) {
+  // SOLO activar sistema scroll en móvil
+
   const activateGalleryItem = (index) => {
-  const clampedIndex = Math.max(0, Math.min(index, galleryItems.length - 1));
+    galleryItems.forEach((item, itemIndex) => {
+      item.classList.toggle("is-active", itemIndex === index);
+    });
+  };
 
-  galleryItems.forEach((item, itemIndex) => {
-    item.classList.toggle("is-active", itemIndex === clampedIndex);
-  });
-};
+  const updateGalleryByScroll = () => {
+    const viewportCenter = window.innerHeight * 0.55;
+    let closestIndex = 0;
+    let closestDistance = Infinity;
 
-const updateGalleryByScroll = () => {
-  if (!galleryItems.length) return;
+    galleryItems.forEach((item, index) => {
+      const rect = item.getBoundingClientRect();
 
-  const viewportCenter = window.innerHeight * 0.55;
-  let closestIndex = 0;
-  let closestDistance = Infinity;
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
 
-  galleryItems.forEach((item, index) => {
-    const rect = item.getBoundingClientRect();
+      const itemCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(itemCenter - viewportCenter);
 
-    // Ignorar elementos fuera de viewport
-    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
 
-    const itemCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(itemCenter - viewportCenter);
+    activateGalleryItem(closestIndex);
+  };
 
-    if (distance < closestDistance) {
-      closestDistance = distance;
-      closestIndex = index;
-    }
-  });
-
-  activateGalleryItem(closestIndex);
-};
-
-if (galleryItems.length) {
   let ticking = false;
 
   const onGalleryScroll = () => {
@@ -136,13 +136,12 @@ if (galleryItems.length) {
   window.addEventListener("resize", onGalleryScroll);
   window.addEventListener("load", onGalleryScroll);
 
-  // Eliminamos el IntersectionObserver que generaba conflicto
   updateGalleryByScroll();
 }
 
 
 /* ===============================
-    RSVP
+   RSVP
 ================================= */
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
