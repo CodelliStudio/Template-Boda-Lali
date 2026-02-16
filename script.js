@@ -47,7 +47,7 @@ setInterval(updateCountdown, 1000);
 
 
 /* ===============================
-   REVEAL
+    REVEAL
 ================================= */
 
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -79,7 +79,7 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
 
 
 /* ===============================
-   GALLERY (Desktop hover / Mobile scroll)
+    GALLERY (Desktop hover / Mobile scroll)
 ================================= */
 
 const galleryItems = [
@@ -141,7 +141,7 @@ if (!hasRealHover && galleryItems.length) {
 
 
 /* ===============================
-   RSVP
+    RSVP
 ================================= */
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
@@ -149,7 +149,7 @@ if (rsvpLink) {
   rsvpLink.addEventListener("click", (event) => {
     if (rsvpLink.getAttribute("href") === "#") {
       event.preventDefault();
-      alert("Cuando tengas tu formulario, reemplaza el # por tu enlace de RSVP.");
+      alert("Falta añadir enlace.");
     }
   });
 }
