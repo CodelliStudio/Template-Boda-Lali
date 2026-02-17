@@ -146,7 +146,7 @@ if (rsvpLink) {
   rsvpLink.addEventListener("click", (event) => {
     if (rsvpLink.getAttribute("href") === "#") {
       event.preventDefault();
-      alert("Cuando tengas tu formulario, reemplaza el # por tu enlace de RSVP.");
+      alert("Falta añadir enlace.");
     }
   });
 }
