@@ -345,6 +345,7 @@ h3 {
 }
 
 .details,
+.itinerary,
 .hotels,
 .adults-only,
 .gifts,
@@ -359,6 +360,95 @@ h3 {
     radial-gradient(circle at 12% 16%, rgba(224, 197, 154, 0.22), transparent 34%),
     radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.26), transparent 30%),
     var(--paper-3);
+}
+
+.itinerary {
+  background:
+    linear-gradient(180deg, rgba(107, 103, 82, 0.94), rgba(95, 91, 73, 0.98)),
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.09), transparent 35%);
+}
+
+.itinerary .section-wrap {
+  max-width: 780px;
+}
+
+.itinerary h2 {
+  color: #f3ebd8;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.08em;
+  margin-bottom: 28px;
+}
+
+.itinerary__wrap {
+  padding-top: clamp(26px, 4vw, 36px);
+  padding-bottom: clamp(26px, 4vw, 36px);
+}
+
+.itinerary__list {
+  position: relative;
+  width: min(440px, 100%);
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.itinerary__list::before {
+  content: "";
+  position: absolute;
+  left: 122px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(236, 228, 202, 0.2), rgba(255, 251, 239, 0.85), rgba(236, 228, 202, 0.2));
+}
+
+.itinerary__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 28px;
+  align-items: center;
+  margin: 18px 0;
+  min-height: 78px;
+}
+
+.itinerary__item::before {
+  content: "";
+  position: absolute;
+  left: 118px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #f7f0dd;
+  border: 1px solid rgba(90, 84, 63, 0.55);
+  box-shadow: 0 0 0 5px rgba(247, 240, 221, 0.11);
+}
+
+.itinerary__icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 236, 214, 0.4);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(78, 75, 60, 0.1));
+  font-size: 1.65rem;
+  filter: grayscale(0.2);
+}
+
+.itinerary__content h3 {
+  color: #f4ecda;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+  margin-bottom: 4px;
+}
+
+.itinerary__content p {
+  color: #e4d8be;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  font-size: 0.82rem;
 }
 
 .hotels,
@@ -748,6 +838,35 @@ h3 {
 
   .bank-details p {
     text-align: center;
+  }
+
+  .itinerary__list {
+    width: min(360px, 100%);
+  }
+
+  .itinerary__list::before {
+    left: 88px;
+  }
+
+  .itinerary__item {
+    grid-template-columns: 72px 1fr;
+    gap: 22px;
+    margin: 16px 0;
+    min-height: 70px;
+  }
+
+  .itinerary__item::before {
+    left: 83px;
+  }
+
+  .itinerary__icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .itinerary__content h3 {
+    font-size: 1.24rem;
   }
 
   .btn-main {

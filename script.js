@@ -45,11 +45,6 @@ const updateCountdown = () => {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-
-/* ===============================
-    REVEAL
-================================= */
-
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const disableRevealMotion = reduceMotionQuery.matches;
 
@@ -83,7 +78,6 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
     Desktop → Hover
     Mobile → Scroll centrado
     NO TOCAR DE AQUÍ ABAJO EN FUTUROS CAMBIOS AL JS
-================================= */
 
 const galleryItems = [
   ...document.querySelectorAll(".gallery__item")
@@ -148,7 +142,6 @@ if (!hasRealHover && galleryItems.length) {
 
 /* ===============================
     RSVP
-================================= */
 
 const rsvpLink = document.querySelector("[data-rsvp-link]");
 if (rsvpLink) {
