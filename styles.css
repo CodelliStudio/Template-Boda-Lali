@@ -172,6 +172,75 @@ h3 {
   padding: 11px 16px;
 }
 
+.hero__eyebrow,
+.hero h1 span,
+.hero h1 em,
+.hero__subtitle,
+.hero__date {
+  animation-duration: 0.92s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.hero__eyebrow {
+  animation-name: heroTextIn;
+  animation-delay: 0.16s;
+}
+
+.hero h1 span {
+  animation-name: heroTextIn;
+}
+
+.hero h1 em {
+  animation-name: heroAmpIn;
+  animation-delay: 0.54s;
+}
+
+.hero__subtitle {
+  animation-name: heroTextIn;
+  animation-delay: 0.94s;
+}
+
+.hero__date {
+  animation-name: heroTextIn;
+  animation-delay: 1.12s;
+}
+
+.hero h1 span:nth-of-type(1) {
+  animation-delay: 0.34s;
+}
+
+.hero h1 span:nth-of-type(2) {
+  animation-delay: 0.74s;
+}
+
+@keyframes heroTextIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroAmpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(-0.08em + 24px));
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 0.92;
+    transform: translateY(-0.08em);
+    filter: blur(0);
+  }
+}
+
 .quote {
   padding: 64px 0;
   border-bottom: 1px solid var(--line);
@@ -364,91 +433,177 @@ h3 {
 
 .itinerary {
   background:
-    linear-gradient(180deg, rgba(107, 103, 82, 0.94), rgba(95, 91, 73, 0.98)),
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.09), transparent 35%);
+    radial-gradient(circle at 14% 12%, rgba(224, 197, 154, 0.24), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(255, 255, 255, 0.32), transparent 34%),
+    linear-gradient(180deg, #f1e4cf 0%, #e8d9c1 100%);
 }
 
 .itinerary .section-wrap {
-  max-width: 780px;
+  max-width: 980px;
 }
 
 .itinerary h2 {
-  color: #f3ebd8;
+  color: #322818;
   font-family: "Playfair Display", serif;
-  letter-spacing: 0.08em;
-  margin-bottom: 28px;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+
+.itinerary__note {
+  color: #5e4f38;
+  margin-bottom: 36px;
 }
 
 .itinerary__wrap {
+  position: relative;
   padding-top: clamp(26px, 4vw, 36px);
   padding-bottom: clamp(26px, 4vw, 36px);
 }
 
 .itinerary__list {
   position: relative;
-  width: min(440px, 100%);
+  width: min(760px, 100%);
   margin: 0 auto;
-  padding: 10px 0;
+  display: grid;
+  gap: 14px;
+  padding: 6px 0;
 }
 
 .itinerary__list::before {
   content: "";
   position: absolute;
-  left: 122px;
-  top: 0;
-  bottom: 0;
+  left: 116px;
+  top: 2px;
+  bottom: 2px;
   width: 1px;
-  background: linear-gradient(180deg, rgba(236, 228, 202, 0.2), rgba(255, 251, 239, 0.85), rgba(236, 228, 202, 0.2));
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(125, 102, 71, 0.55) 12%,
+    rgba(125, 102, 71, 0.35) 88%,
+    transparent
+  );
 }
 
 .itinerary__item {
   position: relative;
   display: grid;
-  grid-template-columns: 108px 1fr;
-  gap: 28px;
+  grid-template-columns: 102px 1fr;
+  gap: 24px;
   align-items: center;
-  margin: 18px 0;
-  min-height: 78px;
+  margin: 0;
+  min-height: 88px;
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(2px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
 }
 
 .itinerary__item::before {
   content: "";
   position: absolute;
-  left: 118px;
-  width: 10px;
-  height: 10px;
+  left: 111px;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
-  background: #f7f0dd;
-  border: 1px solid rgba(90, 84, 63, 0.55);
-  box-shadow: 0 0 0 5px rgba(247, 240, 221, 0.11);
+  background: #fdf9f1;
+  border: 1px solid rgba(122, 99, 67, 0.6);
+  box-shadow: 0 0 0 6px rgba(249, 239, 220, 0.7);
 }
 
-.itinerary__icon {
-  width: 64px;
-  height: 64px;
+.itinerary__time {
+  justify-self: end;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #654f2f;
+  padding-right: 6px;
+}
+
+.itinerary__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px 16px 22px;
+  border: 1px solid rgba(153, 126, 88, 0.45);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(244, 231, 208, 0.9));
+  box-shadow: 0 12px 22px rgba(33, 24, 13, 0.12);
+  overflow: hidden;
+}
+
+.itinerary__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.22), transparent 45%), var(--grain);
+  opacity: 0.26;
+}
+
+.itinerary__step {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
-  justify-self: center;
   border-radius: 999px;
-  border: 1px solid rgba(245, 236, 214, 0.4);
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(78, 75, 60, 0.1));
-  font-size: 1.65rem;
-  filter: grayscale(0.2);
+  border: 1px solid rgba(117, 94, 63, 0.5);
+  background: linear-gradient(180deg, #f9eed9, #ecd7b4);
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 0.04rem;
+  font-size: 0.82rem;
+  color: #4d3920;
 }
 
 .itinerary__content h3 {
-  color: #f4ecda;
-  letter-spacing: 0.08em;
+  color: #2f2518;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
-  margin-bottom: 4px;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  margin-bottom: 3px;
 }
 
 .itinerary__content p {
-  color: #e4d8be;
-  letter-spacing: 0.08rem;
-  text-transform: uppercase;
-  font-size: 0.82rem;
+  color: #6e5a3c;
+  letter-spacing: 0.03rem;
+  text-transform: none;
+  font-size: clamp(0.95rem, 1.5vw, 1.03rem);
+}
+
+.itinerary.reveal.is-visible .itinerary__item {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.itinerary.reveal.is-visible .itinerary__item:nth-child(1) {
+  transition-delay: 0.08s;
+}
+
+.itinerary.reveal.is-visible .itinerary__item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.itinerary.reveal.is-visible .itinerary__item:nth-child(3) {
+  transition-delay: 0.32s;
+}
+
+.itinerary.reveal.is-visible .itinerary__item:nth-child(4) {
+  transition-delay: 0.44s;
+}
+
+.itinerary.reveal.is-visible .itinerary__item:nth-child(5) {
+  transition-delay: 0.56s;
+}
+
+.no-motion .itinerary__item {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
 }
 
 .hotels,
@@ -772,6 +927,28 @@ h3 {
   transition: none;
 }
 
+.no-motion .hero__eyebrow,
+.no-motion .hero h1 span,
+.no-motion .hero h1 em,
+.no-motion .hero__subtitle,
+.no-motion .hero__date {
+  opacity: 1;
+  filter: none;
+  animation: none;
+  will-change: auto;
+}
+
+.no-motion .hero__eyebrow,
+.no-motion .hero h1 span,
+.no-motion .hero__subtitle,
+.no-motion .hero__date {
+  transform: none;
+}
+
+.no-motion .hero h1 em {
+  transform: translateY(-0.08em);
+}
+
 @media (max-width: 1024px) {
   .hero {
     min-height: 88vh;
@@ -789,6 +966,27 @@ h3 {
 
   .cards--hotels {
     grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+
+  .itinerary__list {
+    width: min(700px, 100%);
+  }
+
+  .itinerary__list::before {
+    left: 102px;
+  }
+
+  .itinerary__item {
+    grid-template-columns: 88px 1fr;
+    gap: 18px;
+  }
+
+  .itinerary__item::before {
+    left: 96px;
+  }
+
+  .itinerary__card {
+    padding: 14px 16px 14px 18px;
   }
 
   .rsvp__panel,
@@ -841,32 +1039,47 @@ h3 {
   }
 
   .itinerary__list {
-    width: min(360px, 100%);
+    width: min(430px, 100%);
   }
 
   .itinerary__list::before {
-    left: 88px;
+    left: 80px;
   }
 
   .itinerary__item {
     grid-template-columns: 72px 1fr;
-    gap: 22px;
-    margin: 16px 0;
-    min-height: 70px;
+    gap: 14px;
+    min-height: 76px;
   }
 
   .itinerary__item::before {
-    left: 83px;
+    left: 74px;
   }
 
-  .itinerary__icon {
-    width: 52px;
-    height: 52px;
-    font-size: 1.3rem;
+  .itinerary__time {
+    letter-spacing: 0.08rem;
+    font-size: 0.72rem;
+    padding-right: 0;
+  }
+
+  .itinerary__card {
+    gap: 12px;
+    padding: 12px 14px 12px 16px;
+    border-radius: 13px;
+  }
+
+  .itinerary__step {
+    width: 34px;
+    height: 34px;
+    font-size: 0.72rem;
   }
 
   .itinerary__content h3 {
-    font-size: 1.24rem;
+    font-size: 1.08rem;
+  }
+
+  .itinerary__content p {
+    font-size: 0.92rem;
   }
 
   .btn-main {
