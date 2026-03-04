@@ -72,6 +72,30 @@ if (!disableRevealMotion && "IntersectionObserver" in window) {
   revealElements.forEach((el) => el.classList.add("is-visible"));
 }
 
+const hotelCards = document.querySelectorAll(".cards--hotels .card");
+
+if (!disableRevealMotion && "IntersectionObserver" in window && hotelCards.length) {
+  const hotelCardObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-card-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3, rootMargin: "0px 0px -12% 0px" }
+  );
+
+  hotelCards.forEach((card, index) => {
+    card.classList.add("reveal-card");
+    card.style.setProperty("--card-stagger", `${index * 140}ms`);
+    hotelCardObserver.observe(card);
+  });
+} else {
+  hotelCards.forEach((card) => card.classList.add("is-card-visible"));
+}
+
 
 /* ===============================
     GALLERY

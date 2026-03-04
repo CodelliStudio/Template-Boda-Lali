@@ -1051,7 +1051,7 @@ h3 {
   transition-delay: 0.32s;
 }
 
-.hotels.reveal .cards--hotels .card {
+.hotels .cards--hotels .card.reveal-card {
   opacity: 0;
   transform: translateY(24px) scale(0.985);
   filter: blur(2px);
@@ -1059,24 +1059,13 @@ h3 {
     opacity 0.7s ease,
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.7s ease;
+  transition-delay: var(--card-stagger, 0ms);
 }
 
-.hotels.reveal.is-visible .cards--hotels .card {
+.hotels .cards--hotels .card.reveal-card.is-card-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   filter: blur(0);
-}
-
-.hotels.reveal.is-visible .cards--hotels .card:nth-child(1) {
-  transition-delay: 0.08s;
-}
-
-.hotels.reveal.is-visible .cards--hotels .card:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.hotels.reveal.is-visible .cards--hotels .card:nth-child(3) {
-  transition-delay: 0.32s;
 }
 
 .no-motion .reveal {
@@ -1114,7 +1103,7 @@ h3 {
 .no-motion .rsvp.reveal .rsvp__panel p,
 .no-motion .quote.reveal .quote__card p,
 .no-motion .quote.reveal .quote__verse,
-.no-motion .hotels.reveal .cards--hotels .card {
+.no-motion .hotels .cards--hotels .card.reveal-card {
   opacity: 1;
   transform: none;
   filter: none;
