@@ -101,7 +101,7 @@ h3 {
 
 .hero__image {
   background: url("assets/L&P5908.jpg") center 42% / cover no-repeat;
-  filter: grayscale(100%) contrast(98%);
+  /* filter: grayscale(100%) contrast(98%); */
   transform: scale(1.02);
 }
 
@@ -161,15 +161,17 @@ h3 {
 }
 
 .hero__date {
-  margin: 20px auto 0;
+  margin: 22px auto 0;
   width: fit-content;
-  text-transform: uppercase;
-  letter-spacing: 0.17rem;
-  font-size: 0.78rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.68);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.68);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 11px 16px;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.34rem;
+  font-size: clamp(0.88rem, 1.5vw, 1.04rem);
+  color: #fff5e2;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.19), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  padding: 10px 25px 10px 29px;
 }
 
 .hero__eyebrow,
@@ -302,12 +304,47 @@ h3 {
 }
 
 .photo-band {
-  min-height: 40vh;
+  position: relative;
+  min-height: clamp(240px, 38vh, 420px);
   border-bottom: 1px solid var(--line);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+.photo-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)),
-    url("assets/L&P5974.jpg") center 30%/cover no-repeat;
-  filter: grayscale(100%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.18)),
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.18), transparent 36%);
+}
+
+.photo-band--vows {
+  background-image: url("assets/L&P5974.jpg");
+  background-position: center 32%;
+}
+
+.photo-band--moments {
+  background-image: url("assets/L&P5918.jpg");
+  background-position: center 74%;
+}
+
+.photo-band--kiss {
+  background-image: url("assets/L&P5922.jpg");
+  background-position: center 56%;
+}
+
+.photo-band--sunset {
+  background-image: url("assets/L&P5905.jpg");
+  background-position: center 76%;
+}
+
+.photo-band--final {
+  background-image: url("assets/L&P5971.jpg");
+  background-position: center 50%;
 }
 
 .section {
@@ -676,8 +713,8 @@ h3 {
 }
 
 .cards--hotels {
-  grid-template-columns: repeat(2, minmax(240px, 1fr));
-  max-width: 920px;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -720,6 +757,42 @@ h3 {
   min-height: 64px;
 }
 
+.card--hotel {
+  padding: 18px 18px 24px;
+}
+
+.card--hotel h3 {
+  margin-bottom: 6px;
+}
+
+.card--hotel p {
+  min-height: 72px;
+}
+
+.hotel-thumb {
+  width: 100%;
+  height: 102px;
+  margin: 0 auto 14px;
+  border-radius: 11px;
+  border: 1px solid rgba(149, 123, 86, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.26);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hotel-thumb--magic {
+  background-image: url("assets/L&P5974.jpg");
+}
+
+.hotel-thumb--silencio {
+  background-image: url("assets/L&P5918.jpg");
+}
+
+.hotel-thumb--nuevo {
+  background-image: url("assets/L&P5922.jpg");
+}
+
 .btn-link,
 .btn-main {
   display: inline-flex;
@@ -746,6 +819,16 @@ h3 {
   color: var(--dark);
   background: linear-gradient(180deg, #ffffffc9, #f6ecd8);
   border-radius: 999px;
+}
+
+.btn-link.vestimenta{
+  background: linear-gradient(180deg, black, #171614);
+  color: var(--light);
+}
+
+.btn-link.vestimenta:hover {
+  background: linear-gradient(180deg, #ffffffc9, #f6ecd8);
+  color: var(--dark);
 }
 
 .btn-link::before {
@@ -954,6 +1037,11 @@ h3 {
     min-height: 88vh;
   }
 
+  .hero__date {
+    letter-spacing: 0.27rem;
+    padding: 10px 20px 10px 24px;
+  }
+
   .section {
     padding: 62px 0;
   }
@@ -966,6 +1054,10 @@ h3 {
 
   .cards--hotels {
     grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+
+  .hotel-thumb {
+    height: 94px;
   }
 
   .itinerary__list {
@@ -1016,7 +1108,12 @@ h3 {
   }
 
   .hero__date {
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.2rem;
+    padding: 9px 16px 9px 19px;
+  }
+
+  .photo-band {
+    min-height: clamp(200px, 30vh, 260px);
   }
 
   .cards,
@@ -1028,6 +1125,10 @@ h3 {
 
   .gallery__item {
     min-height: 250px;
+  }
+
+  .hotel-thumb {
+    height: 88px;
   }
 
   .bank-details {
