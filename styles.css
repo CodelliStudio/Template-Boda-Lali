@@ -328,17 +328,17 @@ h3 {
 }
 
 .photo-band--moments {
-  background-image: url("assets/L&P5972.jpg");
-  background-position: center 35%;
+  background-image: url("assets/L&P5918.jpg");
+  background-position: center 90%;
 }
 
 .photo-band--kiss {
-  background-image: url("assets/L&P5933.jpg");
+  background-image: url("assets/L&P5956.jpg");
   background-position: center 30%;
 }
 
 .photo-band--sunset {
-  background-image: url("assets/L&P5907.jpg");
+  background-image: url("assets/L&P5986.jpg");
   background-position: center 40%;
 }
 
@@ -894,7 +894,7 @@ h3 {
 }
 
 .gallery__item:nth-child(1) {
-  background-image: url("assets/L&P5918.jpg");
+  background-image: url("assets/L&P5972.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 90%;
@@ -915,7 +915,7 @@ h3 {
 }
 
 .gallery__item:nth-child(4) {
-  background-image: url("assets/L&P5971.jpg");
+  background-image: url("assets/L&P5933.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center 50%;
@@ -1191,7 +1191,7 @@ h3 {
   }
 
   .photo-band {
-    min-height: clamp(200px, 30vh, 260px);
+    min-height: clamp(350px, 30vh, 260px);
   }
 
   .cards,
