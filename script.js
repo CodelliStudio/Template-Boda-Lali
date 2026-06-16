@@ -16,6 +16,23 @@ const parseTargetDate = () => {
 const targetDate = parseTargetDate();
 const pad = (value) => String(value).padStart(2, "0");
 
+const initGuestPersonalization = () => {
+  const guestSection = document.querySelector("[data-guest-section]");
+  const guestNameEl = document.querySelector("[data-guest-name]");
+  const guestPassesEl = document.querySelector("[data-guest-passes]");
+
+  if (!guestSection || !guestNameEl || !guestPassesEl) return;
+
+  const guestId = new URLSearchParams(window.location.search).get("guestId");
+  const guest = guestId && window.guests ? window.guests[guestId] : null;
+  const guestName = guest?.name || "Queridos invitados";
+
+  guestNameEl.textContent = guestName;
+  guestPassesEl.textContent = guest?.passes
+    ? `Con mucho cariño, hemos reservado ${guest.passes} ${guest.passes === 1 ? "espacio" : "espacios"} para ${guest.passes === 1 ? "usted" : "ustedes"} en este día tan especial.`
+    : "Nos encantará compartir este día con ustedes.";
+};
+
 const updateCountdown = () => {
   if (!targetDate) return;
 
@@ -42,6 +59,7 @@ const updateCountdown = () => {
   if (secondsEl) secondsEl.textContent = pad(seconds);
 };
 
+initGuestPersonalization();
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
