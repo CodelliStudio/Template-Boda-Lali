@@ -20,6 +20,7 @@ const initGuestPersonalization = () => {
   const guestSection = document.querySelector("[data-guest-section]");
   const guestNameEl = document.querySelector("[data-guest-name]");
   const guestPassesEl = document.querySelector("[data-guest-passes]");
+  const guestRsvpButton = document.querySelector("[data-guest-rsvp-button]");
 
   if (!guestSection || !guestNameEl || !guestPassesEl) return;
 
@@ -31,6 +32,10 @@ const initGuestPersonalization = () => {
   guestPassesEl.textContent = guest?.passes
     ? `Con mucho cariño, hemos reservado ${guest.passes} ${guest.passes === 1 ? "espacio" : "espacios"} para ${guest.passes === 1 ? "usted" : "ustedes"} en este día tan especial.`
     : "Nos encantará compartir este día con ustedes.";
+
+  if (guestRsvpButton) {
+    guestRsvpButton.href = guestId ? `rsvp.html?guestId=${encodeURIComponent(guestId)}` : "rsvp.html";
+  }
 };
 
 const updateCountdown = () => {

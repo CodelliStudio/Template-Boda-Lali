@@ -551,6 +551,219 @@ h3 {
   line-height: 1.6;
 }
 
+.guest__rsvp-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  border: 1px solid #2f2619;
+  border-radius: 999px;
+  padding: 13px 24px;
+  background: linear-gradient(180deg, #2b2418, #18140f);
+  color: var(--light);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.13rem;
+  font-size: 0.72rem;
+  box-shadow: 0 12px 22px rgba(15, 15, 15, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.guest__rsvp-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #342b1c, #1b160f);
+  box-shadow: 0 15px 28px rgba(15, 15, 15, 0.3);
+}
+
+.rsvp-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.72), transparent 34%),
+    radial-gradient(circle at 18% 72%, rgba(214, 185, 140, 0.24), transparent 36%),
+    linear-gradient(180deg, var(--bg-soft), var(--bg));
+}
+
+.rsvp-page__shell {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px) clamp(16px, 4vw, 34px);
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.rsvp-back-link {
+  width: fit-content;
+  color: #5f5139;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  font-size: 0.68rem;
+}
+
+.rsvp-back-link:hover {
+  color: var(--dark);
+}
+
+.rsvp-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(168, 142, 101, 0.62);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 36%),
+    linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(242, 230, 209, 0.9));
+  box-shadow: 0 18px 42px rgba(42, 32, 18, 0.14);
+  text-align: center;
+  padding: clamp(34px, 6vw, 58px) clamp(18px, 5vw, 54px);
+}
+
+.rsvp-card::before,
+.rsvp-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: min(280px, 58%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(130, 103, 64, 0.62), transparent);
+}
+
+.rsvp-card::before {
+  top: 24px;
+}
+
+.rsvp-card::after {
+  bottom: 24px;
+}
+
+.rsvp-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rsvp-card h1 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 0.95;
+  margin-bottom: 12px;
+}
+
+.rsvp-card h2 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  margin-bottom: 10px;
+}
+
+.rsvp-card__passes {
+  color: var(--ink-soft);
+  font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+.rsvp-form__group {
+  display: grid;
+  gap: 8px;
+  border: 0;
+  min-width: 0;
+}
+
+.rsvp-form__label {
+  text-transform: uppercase;
+  letter-spacing: 0.13rem;
+  font-size: 0.7rem;
+  color: #5f5139;
+}
+
+.rsvp-form__input,
+.rsvp-form__textarea {
+  width: 100%;
+  border: 1px solid rgba(142, 123, 95, 0.62);
+  border-radius: 12px;
+  background: rgba(255, 252, 246, 0.78);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 12px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.rsvp-form__textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.rsvp-form__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rsvp-form__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(142, 123, 95, 0.5);
+  border-radius: 14px;
+  background: rgba(255, 252, 246, 0.58);
+  color: var(--ink-soft);
+  padding: 13px 14px;
+}
+
+.rsvp-form__option input {
+  accent-color: var(--dark);
+}
+
+.rsvp-form__submit {
+  justify-self: center;
+  border: 1px solid #2f2619;
+  border-radius: 999px;
+  padding: 14px 26px;
+  background: linear-gradient(180deg, #2b2418, #18140f);
+  color: var(--light);
+  text-transform: uppercase;
+  letter-spacing: 0.13rem;
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  box-shadow: 0 12px 22px rgba(15, 15, 15, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.rsvp-form__submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 28px rgba(15, 15, 15, 0.3);
+}
+
+.rsvp-form__submit:disabled {
+  cursor: default;
+  opacity: 0.68;
+}
+
+.rsvp-form__status {
+  min-height: 1.5em;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.rsvp-form__status[data-state="success"] {
+  color: #3e5d38;
+}
+
+.rsvp-form__status[data-state="error"] {
+  color: #8b3d31;
+}
+
 .details,
 .itinerary,
 .hotels,
@@ -1368,6 +1581,23 @@ h3 {
     flex-direction: column;
     gap: 4px;
     padding-inline: 24px;
+  }
+
+  .guest__rsvp-button,
+  .rsvp-form__submit {
+    width: 100%;
+  }
+
+  .rsvp-page__shell {
+    align-content: start;
+  }
+
+  .rsvp-card {
+    border-radius: 16px;
+  }
+
+  .rsvp-form__options {
+    grid-template-columns: 1fr;
   }
 }
 
