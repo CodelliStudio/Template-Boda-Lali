@@ -75,7 +75,7 @@ const initRsvpPage = () => {
 
   if (guestPassesEl) {
     guestPassesEl.textContent = allowedPasses
-      ? `${allowedPasses} ${allowedPasses === 1 ? "pase reservado" : "pases reservados"}`
+      ? `${allowedPasses} ${allowedPasses === 1 ? "espacio reservado" : "espacios reservados"}`
       : "Confirmación general";
   }
 
