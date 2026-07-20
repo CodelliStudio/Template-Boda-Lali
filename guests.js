@@ -184,7 +184,7 @@ const guests = {
     passes: 3
   },
   "gustavo-veronica": {
-    name: "Gustavo Murillo y Verónica Paniagua",
+    name: "Gustavo Murillo" <span> "y" <span> "Verónica Paniagua",
     passes: 2
   },
   "javier-ramirez": {
