@@ -1,12 +1,4 @@
 const guests = {
-  "fam-lopez": {
-    name: "Familia López Jiménez",
-    passes: 4
-  },
-  "julio": {
-    name: "Julio César",
-    passes: 1
-  },  
   "fam-rodriguez-alfaro": {
     name: "Familia Rodríguez Alfaro",
     passes: 3
