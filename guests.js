@@ -95,6 +95,14 @@ const guests = {
     name: "Yosyani Rodríguez",
     passes: 1
   },
+  "christopher-gonzales": {
+    name: "Christopher Gonzales",
+    passes: 1
+  },
+  "marcela-navarro": {
+    name: "Marcela Navarro",
+    passes: 1
+  },
   "fam-padilla-molina": {
     name: "Familia Padilla Molina",
     passes: 2
@@ -269,7 +277,7 @@ const guests = {
   },
   "caro-cortes": {
     name: "Carolina Cortés",
-    passes: 2
+    passes: 1
   },
   "katherine-solis": {
     name: "Katherine Solís",
