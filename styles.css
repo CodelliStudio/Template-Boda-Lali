@@ -1135,14 +1135,78 @@ h3 {
   border-radius: 999px;
 }
 
-.btn-link.vestimenta{
-  background: linear-gradient(180deg, black, #171614);
+.btn-link.vestimenta {
+  position: relative;
+  overflow: hidden;
+  min-width: 168px;
+  padding: 14px 24px;
+  border-color: rgba(255, 245, 226, 0.58);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.18), transparent 46%),
+    linear-gradient(180deg, #171614, #050505);
   color: var(--light);
+  letter-spacing: 0.18rem;
+  font-size: 0.78rem;
+  box-shadow:
+    0 12px 24px rgba(15, 15, 15, 0.24),
+    0 0 0 1px rgba(47, 38, 25, 0.42);
+  animation: dressCodePulse 3s ease-in-out infinite;
+}
+
+.btn-link.vestimenta::after {
+  content: "";
+  position: absolute;
+  inset: -40% -55%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255, 246, 224, 0.68) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(217, 190, 147, 0.46) 0 1.5px, transparent 3px),
+    linear-gradient(105deg, transparent 38%, rgba(255, 246, 224, 0.2) 48%, transparent 58%);
+  background-position: 12% 42%, 38% 62%, 0 0;
+  background-size: 120px 80px, 150px 90px, 100% 100%;
+  opacity: 0.42;
+  transform: translateX(-28%) rotate(8deg);
+  animation: dressCodeSparkle 4.8s ease-in-out infinite;
 }
 
 .btn-link.vestimenta:hover {
-  background: linear-gradient(180deg, #ffffffc9, #f6ecd8);
-  color: var(--dark);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.24), transparent 48%),
+    linear-gradient(180deg, #211d17, #080808);
+  color: var(--light);
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 30px rgba(15, 15, 15, 0.3),
+    0 0 18px rgba(173, 138, 88, 0.28);
+}
+
+@keyframes dressCodePulse {
+  0%,
+  100% {
+    box-shadow:
+      0 12px 24px rgba(15, 15, 15, 0.24),
+      0 0 0 1px rgba(47, 38, 25, 0.42);
+  }
+  50% {
+    box-shadow:
+      0 14px 28px rgba(15, 15, 15, 0.28),
+      0 0 16px rgba(173, 138, 88, 0.26);
+  }
+}
+
+@keyframes dressCodeSparkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translateX(-34%) rotate(8deg);
+  }
+  45% {
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.32;
+    transform: translateX(34%) rotate(8deg);
+  }
 }
 
 .btn-link::before {
@@ -1581,6 +1645,11 @@ h3 {
     flex-direction: column;
     gap: 4px;
     padding-inline: 24px;
+  }
+
+  .btn-link.vestimenta {
+    width: 100%;
+    max-width: 260px;
   }
 
   .guest__rsvp-button,
