@@ -1122,6 +1122,37 @@ h3 {
   transition: all 0.25s ease;
 }
 
+.dress-code__illustration {
+  display: grid;
+  place-items: center;
+  width: min(250px, 100%);
+  margin: 16px auto 8px;
+  padding: 10px 0 6px;
+  border-top: 1px solid rgba(142, 123, 95, 0.28);
+  border-bottom: 1px solid rgba(142, 123, 95, 0.28);
+}
+
+.dress-code__illustration img {
+  display: block;
+  width: min(220px, 100%);
+  height: auto;
+  border-radius: 10px;
+}
+
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  border: 1px solid var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  font-size: 0.7rem;
+  transition: all 0.25s ease;
+}
+
 .btn-link::after,
 .btn-main::after {
   font-size: 0.95rem;
@@ -1650,6 +1681,10 @@ h3 {
   .btn-link.vestimenta {
     width: 100%;
     max-width: 260px;
+  }
+
+  .dress-code__illustration img {
+    width: min(210px, 100%);
   }
 
   .guest__rsvp-button,
