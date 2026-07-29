@@ -1462,6 +1462,86 @@ h3 {
   transition-delay: 0.32s;
 }
 
+.details.reveal .cards > .card,
+.gifts.reveal .gifts__card {
+  opacity: 0;
+  filter: blur(2px);
+  clip-path: inset(8% 0 0 0 round 16px);
+  transition:
+    opacity 0.78s ease,
+    filter 0.78s ease,
+    clip-path 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
+  transition-delay:
+    var(--panel-delay, 0s),
+    var(--panel-delay, 0s),
+    var(--panel-delay, 0s),
+    0s;
+}
+
+.guest.reveal .guest__panel,
+.adults-only.reveal .adults-only__panel,
+.rsvp.reveal .rsvp__panel,
+.quote.reveal .quote__card,
+.footer.reveal .footer__inner {
+  opacity: 0;
+  transform: translateY(20px) scale(0.99);
+  filter: blur(2px);
+  transition:
+    opacity 0.78s ease,
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.78s ease;
+}
+
+.details.reveal.is-visible .cards > .card,
+.gifts.reveal.is-visible .gifts__card {
+  opacity: 1;
+  filter: blur(0);
+  clip-path: inset(0 0 0 0 round 16px);
+}
+
+.guest.reveal.is-visible .guest__panel,
+.adults-only.reveal.is-visible .adults-only__panel,
+.rsvp.reveal.is-visible .rsvp__panel,
+.quote.reveal.is-visible .quote__card,
+.footer.reveal.is-visible .footer__inner {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.details.reveal.is-visible .cards > .card:nth-child(1) {
+  --panel-delay: 0.08s;
+}
+
+.details.reveal.is-visible .cards > .card:nth-child(2) {
+  --panel-delay: 0.2s;
+}
+
+.details.reveal.is-visible .cards > .card:nth-child(3) {
+  --panel-delay: 0.32s;
+}
+
+.guest.reveal.is-visible .guest__panel,
+.footer.reveal.is-visible .footer__inner {
+  transition-delay: 0.12s;
+}
+
+.details.reveal.is-visible .dress-code__illustration img {
+  animation: dressCodeFloat 6s ease-in-out 0.8s infinite;
+}
+
+@keyframes dressCodeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 .hotels .cards--hotels .card.reveal-card {
   opacity: 0;
   transform: translateY(24px) scale(0.985);
@@ -1514,11 +1594,23 @@ h3 {
 .no-motion .rsvp.reveal .rsvp__panel p,
 .no-motion .quote.reveal .quote__card p,
 .no-motion .quote.reveal .quote__verse,
+.no-motion .details.reveal .cards > .card,
+.no-motion .gifts.reveal .gifts__card,
+.no-motion .guest.reveal .guest__panel,
+.no-motion .adults-only.reveal .adults-only__panel,
+.no-motion .rsvp.reveal .rsvp__panel,
+.no-motion .quote.reveal .quote__card,
+.no-motion .footer.reveal .footer__inner,
 .no-motion .hotels .cards--hotels .card.reveal-card {
   opacity: 1;
   transform: none;
   filter: none;
+  clip-path: none;
   transition: none;
+}
+
+.no-motion .dress-code__illustration img {
+  animation: none;
 }
 
 @media (max-width: 1024px) {
