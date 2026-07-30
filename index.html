@@ -92,19 +92,22 @@
           <div class="cards">
             <article class="card">
               <h3>Ceremonia</h3>
-              <p>2:00 PM · Catedral Ciudad Quesada</p>
+              <p>1:30 PM · Catedral Ciudad Quesada</p>
               <a href="https://maps.app.goo.gl/go4KzJRvL7m3dEKN8" class="btn-link">Ver ubicación</a>
-            </article>
-            <article class="card">
-              <h3>Dress Code</h3>
-              <p>All Black · Atuendo Completamente Negro <br>
-              Evitar Lentejuelas y Estampados</p>
-              <a href="https://pin.it/45DjPrQuX" class="btn-link vestimenta">All Black</a>
             </article>
             <article class="card">
               <h3>Recepción</h3>
               <p>4:00 PM · Centro de Eventos Aura</p>
               <a href="https://maps.app.goo.gl/mn47443eh8J12PxTA" class="btn-link">Ver ubicación</a>
+            </article>
+            <article class="card">
+              <h3>Dress Code</h3>
+              <p>All Black · Atuendo <strong>Completamente Negro</strong> <br>
+              Evitar Lentejuelas y Estampados</p>
+              <div class="dress-code__illustration" aria-hidden="true">
+                <img src="assets/dress-code-formal.png" alt="" />
+              </div>
+              <a href="https://pin.it/45DjPrQuX" class="btn-link vestimenta">All Black</a>
             </article>
           </div>
         </div>
@@ -173,6 +176,16 @@
         </div>
       </section> -->
 
+      <section class="guest section reveal" data-guest-section>
+        <div class="section-wrap guest__panel">
+          <span class="guest__ornament" aria-hidden="true">❦</span>
+          <p class="guest__eyebrow">Invitación especial para</p>
+          <h2 data-guest-name>Queridos invitados</h2>
+          <p class="guest__passes" data-guest-passes></p>
+          <a class="guest__rsvp-button" href="rsvp.html" data-guest-rsvp-button>Confirmar asistencia</a>
+        </div>
+      </section>
+
       <section class="hotels section reveal">
         <div class="section-wrap">
           <h2>Hoteles recomendados</h2>
@@ -233,9 +246,9 @@
         </div>
       </section> -->
 
-      <div class="ornament reveal" aria-hidden="true">❧</div>
+      <!-- <div class="ornament reveal" aria-hidden="true">❧</div> -->
 
-      <section class="gallery section reveal">
+      <!-- <section class="gallery section reveal">
         <div class="section-wrap">
           <h2>Galería</h2>
           <div class="gallery__grid">
@@ -245,7 +258,7 @@
             <figure class="gallery__item"></figure>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- <section class="photo-band photo-band--final reveal" aria-hidden="true"></section> -->
 
@@ -277,6 +290,7 @@
       </footer>
     </main>
 
+    <script src="guests.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
