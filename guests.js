@@ -39,16 +39,16 @@ const guests = {
     name: "Familia Hall",
     passes: 2
   },
-  "karina-quesada": {
-    name: "Karina Quesada",
-    passes: 1
-  },
-  "esteban-cedeno": {
-    name: "Esteban Cedeño",
-    passes: 1
+  "fam-cedeno-quesada": {
+    name: "Familia Cedeño Quesada",
+    passes: 2
   },
   "fam-gamboa-padilla": {
     name: "Familia Gamboa Padilla",
+    passes: 2
+  },
+  "fam-vargas-solis": {
+    name: "Familia Vargas Solís",
     passes: 2
   },
   "fam-cordoba-bastos": {
