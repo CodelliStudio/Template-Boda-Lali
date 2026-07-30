@@ -102,7 +102,7 @@ h3 {
 }
 
 .hero__image {
-  background: url("assets/L&P5908.jpg") center 42% / cover no-repeat;
+  background: url("assets/L&PP5908.jpg") center 42% / cover no-repeat;
   /* filter: grayscale(100%) contrast(98%); */
   transform: scale(1.02);
 }
@@ -325,22 +325,22 @@ h3 {
 }
 
 .photo-band--vows {
-  background-image: url("assets/L&P5974.jpg");
+  background-image: url("assets/L&PP5974.jpg");
   background-position: center 32%;
 }
 
 .photo-band--moments {
-  background-image: url("assets/L&P5918.jpg");
+  background-image: url("assets/L&PP5918.jpg");
   background-position: center 90%;
 }
 
 .photo-band--kiss {
-  background-image: url("assets/L&P5956.jpg");
+  background-image: url("assets/L&PP5956.jpg");
   background-position: center 30%;
 }
 
 .photo-band--sunset {
-  background-image: url("assets/L&P5986.jpg");
+  background-image: url("assets/L&PP5986.jpg");
   background-position: center 40%;
 }
 
