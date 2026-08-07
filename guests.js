@@ -145,7 +145,11 @@ const guests = {
   },
   "fam-calderon-duarte": {
     name: "Familia Calderón Duarte",
-    passes: 3
+    passes: 2
+  },
+  "mauren-calderon": {
+    name: "Mauren Calderón",
+    passes: 1
   },
   "fam-esquivel-duarte": {
     name: "Familia Esquivel Duarte",
