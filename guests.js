@@ -382,6 +382,10 @@ const guests = {
   "asdrubal-duarte": {
     name: "Asdrubal Duarte",
     passes: 1
+  },
+  "marvin-valverde": {
+    name: "Marvin Valverde",
+    passes: 1
   }
 };
 
