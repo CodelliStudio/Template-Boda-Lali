@@ -3,39 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Confirmar asistencia | Valentina</title>
+    <title>Confirmar asistencia | Javier &amp; Laura</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=EB+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="rsvp-page">
     <main class="rsvp-page__shell">
       <a class="rsvp-back-link" href="index.html" data-rsvp-back-link>Volver a la invitación</a>
+
       <section class="rsvp-card" aria-labelledby="rsvp-title">
-        <span class="guest__ornament" aria-hidden="true">✦</span>
-        <p class="guest__eyebrow">Mis XV años</p>
+        <span class="guest__ornament" aria-hidden="true">❦</span>
+        <p class="guest__eyebrow">Invitación para</p>
         <h1 id="rsvp-title">Confirmar asistencia</h1>
         <h2 data-rsvp-guest-name>Queridos invitados</h2>
-        <p class="rsvp-card__passes" data-rsvp-guest-passes>Nos encantará celebrar con ustedes.</p>
+        <p class="rsvp-card__passes" data-rsvp-guest-passes>Nos encantará compartir este día con ustedes.</p>
+
         <form class="rsvp-form" data-rsvp-form>
           <input type="hidden" name="guestId" />
           <input type="hidden" name="guestName" />
           <input type="hidden" name="allowedPasses" />
+
           <fieldset class="rsvp-form__group">
             <legend class="rsvp-form__label">Asistencia</legend>
             <div class="rsvp-form__options">
-              <label class="rsvp-form__option"><input type="radio" name="attending" value="Sí, asistiremos" data-attending-field checked /><span>Sí, asistiremos</span></label>
-              <label class="rsvp-form__option"><input type="radio" name="attending" value="No podremos asistir" data-attending-field /><span>No podremos asistir</span></label>
+              <label class="rsvp-form__option">
+                <input type="radio" name="attending" value="Sí, asistiremos" data-attending-field checked />
+                <span>Sí, asistiremos</span>
+              </label>
+              <label class="rsvp-form__option">
+                <input type="radio" name="attending" value="No podremos asistir" data-attending-field />
+                <span>No podremos asistir</span>
+              </label>
             </div>
           </fieldset>
-          <label class="rsvp-form__group"><span class="rsvp-form__label">Cantidad confirmada</span><select class="rsvp-form__input" name="confirmedCount" data-confirmed-count></select></label>
-          <label class="rsvp-form__group"><span class="rsvp-form__label">Mensaje opcional</span><textarea class="rsvp-form__textarea" name="message" rows="4" placeholder="Déjanos un mensaje si lo deseas"></textarea></label>
+
+          <label class="rsvp-form__group">
+            <span class="rsvp-form__label">Cantidad confirmada</span>
+            <select class="rsvp-form__input" name="confirmedCount" data-confirmed-count></select>
+          </label>
+
+          <label class="rsvp-form__group">
+            <span class="rsvp-form__label">Mensaje opcional</span>
+            <textarea
+              class="rsvp-form__textarea"
+              name="message"
+              rows="4"
+              placeholder="Déjenos un mensaje si lo desean"
+            ></textarea>
+          </label>
+
           <button class="rsvp-form__submit" type="submit" data-rsvp-submit>Enviar confirmación</button>
           <p class="rsvp-form__status" data-rsvp-status role="status" aria-live="polite"></p>
         </form>
       </section>
     </main>
+
     <script src="guests.js"></script>
     <script src="rsvp.js"></script>
   </body>

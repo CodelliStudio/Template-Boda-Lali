@@ -1,6 +1,4 @@
-// Se configurará con la nueva hoja de confirmaciones de Valentina.
-// Nunca debe reutilizarse el endpoint de otra celebración.
-const RSVP_ENDPOINT = "";
+const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbw0z2rcQ_p_6ln7ObBQ3bhPzXnfBbmRf1X8RglRJQRYvSoJgyzrZaGo7f_BcQXBHdPv/exec";
 
 const form = document.querySelector("[data-rsvp-form]");
 const statusEl = document.querySelector("[data-rsvp-status]");
@@ -113,11 +111,6 @@ const submitRsvp = async (event) => {
   event.preventDefault();
 
   if (!form || !submitButton) return;
-
-  if (!RSVP_ENDPOINT) {
-    setStatus("Las confirmaciones estarán disponibles pronto.", "error");
-    return;
-  }
 
   setStatus("Enviando confirmación...", "loading");
   submitButton.disabled = true;
