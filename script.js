@@ -30,8 +30,8 @@ const initGuestPersonalization = () => {
 
   guestNameEl.textContent = guestName;
   guestPassesEl.textContent = guest?.passes
-    ? `Con mucho cariño, hemos reservado ${guest.passes} ${guest.passes === 1 ? "espacio" : "espacios"} para ${guest.passes === 1 ? "usted" : "ustedes"} en este día tan especial.`
-    : "Nos encantará compartir este día con ustedes.";
+    ? `Con mucho cariño, hemos reservado ${guest.passes} ${guest.passes === 1 ? "espacio" : "espacios"} para ${guest.passes === 1 ? "usted" : "ustedes"} en esta noche tan especial.`
+    : "Muy pronto podrás confirmar tu asistencia.";
 
   if (guestRsvpButton) {
     guestRsvpButton.href = guestId ? `rsvp.html?guestId=${encodeURIComponent(guestId)}` : "rsvp.html";
