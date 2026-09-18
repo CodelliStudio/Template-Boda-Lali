@@ -390,6 +390,10 @@ const guests = {
   "fam-ramirez-viquez": {
     name: "Familia Ramírez Víquez",
     passes: 2
+  },
+  "fam-monge-mata": {
+    name: "Familia Monge Mata",
+    passes: 2
   }
 };
 
