@@ -12,12 +12,13 @@ const backLink = document.querySelector("[data-rsvp-back-link]");
 const params = new URLSearchParams(window.location.search);
 const guestId = params.get("guestId");
 const guest = guestId && window.guests ? window.guests[guestId] : null;
-const guestName = guest?.name || "Queridos invitados";
-const allowedPasses = guest?.passes || "";
-const genericMaxPasses = 10;
+
+const guestName = guest?.name || "";
+const allowedPasses = guest?.passes || 0;
 
 const setStatus = (message, state = "") => {
   if (!statusEl) return;
+
   statusEl.textContent = message;
   statusEl.dataset.state = state;
 };
@@ -48,20 +49,23 @@ const setDeclinedCount = () => {
   const option = document.createElement("option");
   option.value = "0";
   option.textContent = "0";
+
   confirmedCountEl.appendChild(option);
   confirmedCountEl.value = "0";
   confirmedCountEl.disabled = true;
 };
 
 const setAcceptedCount = () => {
-  if (!confirmedCountEl) return;
+  if (!confirmedCountEl || !guest) return;
 
-  fillConfirmedCountOptions(allowedPasses || genericMaxPasses);
+  fillConfirmedCountOptions(allowedPasses);
   confirmedCountEl.disabled = false;
   confirmedCountEl.value = "1";
 };
 
 const syncAttendanceState = () => {
+  if (!guest) return;
+
   if (getSelectedAttendance() === "No podremos asistir") {
     setDeclinedCount();
     return;
@@ -70,32 +74,89 @@ const syncAttendanceState = () => {
   setAcceptedCount();
 };
 
-const initRsvpPage = () => {
-  if (guestNameEl) guestNameEl.textContent = guestName;
+const disableInvalidRsvp = () => {
+  if (guestNameEl) {
+    guestNameEl.textContent = "Invitación no identificada";
+  }
 
   if (guestPassesEl) {
-    guestPassesEl.textContent = allowedPasses
-      ? `${allowedPasses} ${allowedPasses === 1 ? "espacio reservado" : "espacios reservados"}`
-      : "Confirmación general";
+    guestPassesEl.textContent =
+      "Por favor, ingrese desde el enlace personalizado que recibió.";
+  }
+
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
+
+  if (confirmedCountEl) {
+    confirmedCountEl.disabled = true;
+  }
+
+  attendingFields.forEach((field) => {
+    field.disabled = true;
+  });
+
+  if (form) {
+    const messageField = form.elements.message;
+
+    if (messageField) {
+      messageField.disabled = true;
+    }
+  }
+
+  setStatus(
+    "No pudimos identificar su invitación. Abra nuevamente el enlace personalizado que recibió.",
+    "error"
+  );
+};
+
+const initRsvpPage = () => {
+  if (!guest) {
+    disableInvalidRsvp();
+
+    if (backLink) {
+      backLink.href = "index.html";
+    }
+
+    return;
+  }
+
+  if (guestNameEl) {
+    guestNameEl.textContent = guestName;
+  }
+
+  if (guestPassesEl) {
+    guestPassesEl.textContent =
+      `${allowedPasses} ${
+        allowedPasses === 1 ? "espacio reservado" : "espacios reservados"
+      }`;
   }
 
   if (backLink) {
-    backLink.href = guestId ? `index.html?guestId=${encodeURIComponent(guestId)}` : "index.html";
+    backLink.href =
+      `index.html?guestId=${encodeURIComponent(guestId)}`;
   }
 
   if (form) {
-    form.elements.guestId.value = guestId || "";
+    form.elements.guestId.value = guestId;
     form.elements.guestName.value = guestName;
-    form.elements.allowedPasses.value = allowedPasses ? String(allowedPasses) : "";
+    form.elements.allowedPasses.value = String(allowedPasses);
   }
 
   setAcceptedCount();
-  attendingFields.forEach((field) => field.addEventListener("change", syncAttendanceState));
+
+  attendingFields.forEach((field) => {
+    field.addEventListener("change", syncAttendanceState);
+  });
 };
 
 const getPayload = () => {
   const attending = getSelectedAttendance();
-  const confirmedCount = attending === "No podremos asistir" ? "0" : confirmedCountEl?.value || "1";
+
+  const confirmedCount =
+    attending === "No podremos asistir"
+      ? "0"
+      : confirmedCountEl?.value || "1";
 
   return new URLSearchParams({
     guestId: form.elements.guestId.value,
@@ -112,6 +173,17 @@ const submitRsvp = async (event) => {
 
   if (!form || !submitButton) return;
 
+  // Seguridad: nunca enviar una confirmación sin invitado válido.
+  if (!guest || !guestId) {
+    setStatus(
+      "No pudimos identificar su invitación. Abra nuevamente el enlace personalizado que recibió.",
+      "error"
+    );
+
+    submitButton.disabled = true;
+    return;
+  }
+
   setStatus("Enviando confirmación...", "loading");
   submitButton.disabled = true;
 
@@ -122,10 +194,17 @@ const submitRsvp = async (event) => {
       body: getPayload()
     });
 
-    setStatus("Gracias, hemos recibido tu confirmación.", "success");
+    setStatus(
+      "Gracias, hemos recibido tu confirmación.",
+      "success"
+    );
   } catch (error) {
     submitButton.disabled = false;
-    setStatus("No pudimos enviar la confirmación. Inténtelo nuevamente.", "error");
+
+    setStatus(
+      "No pudimos enviar la confirmación. Inténtelo nuevamente.",
+      "error"
+    );
   }
 };
 
