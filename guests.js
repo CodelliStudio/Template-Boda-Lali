@@ -402,6 +402,22 @@ const guests = {
   "juan-carlos-bastos": {
     name: "Juan Carlos Bastos",
     passes: 1
+  },
+  "oscar-gabriela": {
+    name: "Oscar Alfaro y Gabriela Artavia",
+    passes: 2
+  },
+  "joshy-vargas": {
+    name: "Joshy Vargas",
+    passes: 1
+  },
+  "fam-acuna-blanco": {
+    name: "Familia Acuña Blanco",
+    passes: 2
+  },
+  "fam-pieters-arguello": {
+    name: "Familia Pieters Argüello",
+    passes: 2
   }
 };
 
