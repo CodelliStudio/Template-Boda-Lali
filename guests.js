@@ -418,7 +418,16 @@ const guests = {
   "fam-pieters-arguello": {
     name: "Familia Pieters Argüello",
     passes: 2
+  },
+  "juan-juliana": {
+    name: "Juan Alfaro y Juliana Vargas",
+    passes: 2
+  },
+  "diego-paola": {
+    name: "Diego Alfaro y Paola Ulloa",
+    passes: 2
   }
+
 };
 
 window.guests = guests;
