@@ -426,8 +426,11 @@ const guests = {
   "diego-paola": {
     name: "Diego Alfaro y Paola Ulloa",
     passes: 2
+  },
+  "juan-stephanie": {
+    name: "Juan José Carvajal y Stephanie Hernández",
+    passes: 2
   }
-
 };
 
 window.guests = guests;
