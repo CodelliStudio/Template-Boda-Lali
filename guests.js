@@ -430,6 +430,10 @@ const guests = {
   "juan-stephanie": {
     name: "Juan José Carvajal y Stephanie Hernández",
     passes: 2
+  },
+  "fam-gamboa-sancho": {
+    name: "Familia Gamboa Sancho",
+    passes: 2
   }
 };
 
